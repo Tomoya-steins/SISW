@@ -1,0 +1,14 @@
+<%= form_with model: @post, url: posts_path, local: true do |f| %>
+<%= flash[:alert] %>
+<p>
+    <%= f.label :title, 'タイトル' %>
+    <%= f.text_field :title %>
+</p>
+
+<p>
+    <%= f.label :image, '投稿画像' %>
+    <%= f.attachment_field :image %>
+</p>
+
+<p><%= f.submit '投稿' %></p>
+<% end %>

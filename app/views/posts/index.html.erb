@@ -1,0 +1,10 @@
+<p>Welcome <%= current_user.name %>!</p>
+
+<p>投稿内容一覧</p>
+<% @posts.each do |post| %>
+<p>
+    <%= link_to post_path(post) do %>
+    <%= post.title %>
+</p>
+<% end %>
+<% end %>

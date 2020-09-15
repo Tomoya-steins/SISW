@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SISW</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+    <% if current_user != nil %>
+    <%= link_to  "投稿一覧", root_path %>
+    <%= link_to 'ユーザ一覧', accounts_path %>
+    <%= link_to 'ログアウト', logout_path, method: :delete %>
+    <% if current_user.id == 2 %>
+    <%= link_to '新規投稿', new_post_path %>
+    <%  end %>
+    <% end %>
+    <%= yield %>
+</body>
+
+</html>

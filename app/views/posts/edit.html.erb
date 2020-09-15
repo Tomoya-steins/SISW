@@ -1,0 +1,14 @@
+<%= form_with model: @post, url: post_path do |f| %>
+
+<p>
+    <%= f.label :タイトル %>
+    <%= f.text_field :title %>
+</p>
+
+<p>
+    <%= f.label :投稿画像 %>
+    <%= f.attachment_field :image %>
+</p>
+
+<p><%= f.submit "変更"%></p>
+<% end %>

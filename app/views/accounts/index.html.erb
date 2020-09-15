@@ -1,0 +1,12 @@
+<ul>
+    <% @users_info.each do |info| %>
+    <li>
+        <%= info.name %>
+        <%= info.account_id %>
+        <%= link_to '編集', edit_account_path(info) %>
+        <% if current_user.id != info.id %>
+        <%= link_to '削除', "accounts/#{info.id}", method: :delete %>
+        <% end %>
+    </li>
+    <% end %>
+</ul>

@@ -1,0 +1,15 @@
+<%= form_with model: @info, url: account_path,  local: true do |f|  %>
+
+<p>
+    <%= f.label :名前 %>
+    <%= f.text_field :name, value: @info.name, required: true %>
+</p>
+
+<p>
+    <%= f.label :アカウントID %>
+    <%= f.text_field :account_id, value: @info.account_id, required: true %>
+</p>
+
+<p><%= f.submit '変更' %></p>
+
+<% end %>
