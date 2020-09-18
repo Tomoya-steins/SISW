@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   
   resources :posts
 
+  resources :personal, only: [:show, :edit, :update]
+  get 'personal_password/:id/edit' => 'personal#password_edit'
+  post 'personal_password/:id/edit' => 'personal#password_update'
+
   namespace :api do
     get 'login' => 'login#show'
     resources :posts

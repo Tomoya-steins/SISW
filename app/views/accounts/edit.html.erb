@@ -1,15 +1,42 @@
-<%= form_with model: @info, url: account_path,  local: true do |f|  %>
+ <section class="hero is-light is-fullheight">
+     <div class="hero-head">
 
-<p>
-    <%= f.label :名前 %>
-    <%= f.text_field :name, value: @info.name, required: true %>
-</p>
+         <section class="hero is-primary">
+             <div class="hero-body">
+                 <div class="container">
+                     <h1 class="title">
+                         <%=@info.name%>-編集
+                     </h1>
+                 </div>
+             </div>
+         </section>
 
-<p>
-    <%= f.label :アカウントID %>
-    <%= f.text_field :account_id, value: @info.account_id, required: true %>
-</p>
+         <section class="section">
+             <div class="container">
+                 <div class="columns is-centered">
+                     <div class="column is-5">
+                         <%= form_with model: @info, url: account_path,  local: true do |f|  %>
 
-<p><%= f.submit '変更' %></p>
+                         <div class="field">
+                             <p>
+                                 <%= f.label :名前 %>
+                                 <%= f.text_field :name, value: @info.name, required: true, class: "input" %>
+                             </p>
+                         </div>
 
-<% end %>
+                         <div class="field">
+                             <p>
+                                 <%= f.label :アカウントID %>
+                                 <%= f.text_field :account_id, value: @info.account_id, required: true, class: "input"  %>
+                             </p>
+                         </div>
+
+                         <div class="actions">
+                             <p><%= f.submit '変更', class: "button is-success"  %></p>
+                         </div>
+
+                         <% end %>
+                     </div>
+                 </div>
+             </div>
+         </section>

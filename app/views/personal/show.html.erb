@@ -1,0 +1,16 @@
+<section class="hero is-light is-fullheight">
+    <div class="hero-head">
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">
+                        <%= @personal.name %>-詳細
+                    </h1>
+                </div>
+            </div>
+        </section>
+        <p>
+            <%= @personal.name %>
+            <%= @personal.account_id %>
+            <%= link_to '編集', edit_personal_path(@personal) %>
+        </p>

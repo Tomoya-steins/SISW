@@ -1,16 +1,46 @@
- <%= form_with scope: :session, url: login_path, local: true do |f| %>
- <%= flash[:alert] %>
- <p>
-     <%= f.label :account_id, 'アカウントID' %>
-     <%= f.text_field :account_id, required: true %>
- </p>
+ <section class="hero is-light is-fullheight">
+     <div class="hero-head">
 
- <p>
-     <%= f.label :password, 'パスワード' %>
-     <%= f.password_field :password, required: true %>
- </p>
+         <section class="hero is-primary">
+             <div class="hero-body">
+                 <div class="container">
+                     <h1 class="title">
+                         ログイン
+                     </h1>
+                 </div>
+             </div>
+         </section>
 
- <p><%= f.submit 'ログイン' %></p>
- <% end %>
+         <section class="section">
+             <div class="container">
+                 <div class="columns is-centered">
+                     <div class="column is-5">
+                         <%= form_with scope: :session, url: login_path, local: true do |f| %>
+                         <%= flash[:alert] %>
 
- <p><%= link_to 'サインアップはこちら', signup_path %></p>
+                         <div class="field">
+                             <p>
+                                 <%= f.label :account_id, 'アカウントID' %>
+                                 <%= f.text_field :account_id, required: true, class: "input" %>
+                             </p>
+                         </div>
+
+                         <div class="field">
+                             <p>
+                                 <%= f.label :password, 'パスワード' %>
+                                 <%= f.password_field :password, required: true, class: "input" %>
+                             </p>
+                         </div>
+
+                         <div class="actions">
+                             <p><%= f.submit 'ログイン', class: "button is-success" %></p>
+                         </div>
+                         <% end %>
+
+                         <p><%= link_to 'パスワードをお忘れの場合' %></p>
+                     </div>
+                 </div>
+             </div>
+         </section>
+     </div>
+ </section>
