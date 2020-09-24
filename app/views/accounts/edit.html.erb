@@ -15,7 +15,7 @@
              <div class="container">
                  <div class="columns is-centered">
                      <div class="column is-5">
-                         <%= form_with model: @info, url: account_path,  local: true do |f|  %>
+                         <%= form_with model: @info, url: account_path,  local: true do |f|%>
 
                          <div class="field">
                              <p>
@@ -31,8 +31,15 @@
                              </p>
                          </div>
 
+                         <div class="field">
+                             <p>
+                                 <%= f.label :メールアドレス %>
+                                 <%= f.text_field :email, value: @info.email, required: true, class: "input"  %>
+                             </p>
+                         </div>
+
                          <div class="actions">
-                             <p><%= f.submit '変更', class: "button is-success"  %></p>
+                             <p><%= f.submit '変更', class: "button is-success"%></p>
                          </div>
 
                          <% end %>

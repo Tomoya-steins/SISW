@@ -44,12 +44,12 @@
                     <div class="navbar-item">
                         <%= link_to  "投稿一覧", root_path, class: "navbar-item button is-primary is-light" %>
                     </div>
-                    <% if current_user.id == 1 ||  current_user.id == 2 || current_user.id == 3 || current_user.id == 4 || current_user.id == 5 %>
+                    <% if current_user.admin? %>
                     <div class="navbar-item">
                         <%= link_to '新規投稿', new_post_path, class: "navbar-item button is-primary is-light" %>
                     </div>
                     <%  end %>
-                    <% if current_user.id == 1 ||  current_user.id == 2 || current_user.id == 3 || current_user.id == 4 || current_user.id == 5 %>
+                    <% if current_user.admin? %>
                     <div class="navbar-item">
                         <%= link_to 'ユーザ一覧', accounts_path, class: "navbar-item button is-primary is-light" %>
                     </div>

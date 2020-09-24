@@ -27,17 +27,29 @@
 
                          <div class="field">
                              <p>
+                                 <%= f.label :email, 'メールアドレス' %>
+                                 <%= f.text_field :email, required: true, class: "input" %>
+                             </p>
+                         </div>
+
+                         <div class="field">
+                             <p>
                                  <%= f.label :password, 'パスワード' %>
                                  <%= f.password_field :password, required: true, class: "input" %>
                              </p>
                          </div>
+
+                         <%= f.label :remember_me, class:"checkbox" do %>
+                         <%= f.check_box :remember_me %>
+                         <span>コンピュータに保存</span>
+                         <% end %>
 
                          <div class="actions">
                              <p><%= f.submit 'ログイン', class: "button is-success" %></p>
                          </div>
                          <% end %>
 
-                         <p><%= link_to 'パスワードをお忘れの場合' %></p>
+                         <p><%= link_to 'パスワードをお忘れ,または変更したい場合', forgot_path %></p>
                      </div>
                  </div>
              </div>

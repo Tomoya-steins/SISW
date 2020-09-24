@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  before_action :admin_user, only: :destroy
+  
   def index
     @users_info = User.all
   end
@@ -15,7 +17,7 @@ class AccountsController < ApplicationController
 
   def update
     @info = User.find(params[:id])
-    if @info.update(user_params)
+    if @info.update_attributes(user_params)
       redirect_to accounts_path, notice: "更新されました"
     else
       render :edit
@@ -24,6 +26,11 @@ class AccountsController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :account_id)
+    params.require(:user).permit(:name, :account_id, :email)
+  end
+
+  def admin_user
+    redirect_to(login_path) unless current_user.admin?
+      
   end
 end

@@ -1,0 +1,4 @@
+<h1>Sharing Information at School</h1>
+<p><%= @user.name %></p>
+<p>SISをご利用いただきありがとうございます。こちらのリンクから登録が完了いたします。</p>
+<%= link_to "有効化", edit_account_activation_url(@user.activation_token, email: @user.email) %>

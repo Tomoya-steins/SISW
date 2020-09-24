@@ -41,6 +41,13 @@
 
                         <div class="field">
                             <p>
+                                <%= f.label :email, 'メールアドレス' %>
+                                <%= f.text_field :email, required: true, class: "input" %>
+                            </p>
+                        </div>
+
+                        <div class="field">
+                            <p>
                                 <%= f.label :password, 'パスワード' %>
                                 <%= f.password_field :password, required: true, class: "input"  %>
                             </p>

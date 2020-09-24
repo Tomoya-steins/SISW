@@ -9,13 +9,19 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'
 
+  get 'forgot' => 'forgot_password#input'
+  post 'forgot' => 'forgot_password#get'
+
+  get ':id/change' => 'forgot_password#change'
+  post ':id/change' => 'forgot_password#update'
+
+  resources :account_activations, lonly: [:edit]
+
   resources :accounts
   
   resources :posts
 
   resources :personal, only: [:show, :edit, :update]
-  get 'personal_password/:id/edit' => 'personal#password_edit'
-  post 'personal_password/:id/edit' => 'personal#password_update'
 
   namespace :api do
     get 'login' => 'login#show'

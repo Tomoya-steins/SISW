@@ -1,0 +1,8 @@
+<%= form_with url: forgot_path, local: true do |f| %>
+<p>アカウントIDを入力してください</p>
+<p>
+    <%= f.label :account_id, 'アカウントID' %>
+    <%= f.text_field :account_id, required: true%>
+</p>
+<p><%= f.submit "確認" %></p>
+<% end %>

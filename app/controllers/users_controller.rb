@@ -5,12 +5,18 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    render :new unless @user.save
+    if @user.save
+      UserMailer.account_activation(@user).deliver_now
+      flash[:info] = "入力されたEメールから有効化をお願いします。"
+      redirect_to login_path
+    else
+    render :new
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:name, :account_id, :password, :password_confirmation)
+    params.require(:user).permit(:name, :account_id, :email, :password, :password_confirmation)
   end
 end

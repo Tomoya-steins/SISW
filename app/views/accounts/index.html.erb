@@ -11,7 +11,6 @@
              </div>
          </section>
 
-         　　　　　
          <section class="section">
              <div class="content is-medium">
                  <ul　class="has-text-left field">
@@ -19,6 +18,7 @@
                      <li class="field">
                          <%= info.name %>
                          <%= info.account_id %>
+                         <%= info.email %>
                          <%= link_to '編集', edit_account_path(info) %>
                          <% if current_user.id != info.id %>
                          <%= link_to '削除', "accounts/#{info.id}", method: :delete %>
@@ -27,5 +27,6 @@
                      <% end %>
                  </ul>
              </div>
+
 
          </section>

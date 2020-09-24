@@ -1,0 +1,4 @@
+<%= @user.name %>様
+SISをご利用いただきありがとうございます。こちらのリンクから登録が完了いたします。
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %> 
+
