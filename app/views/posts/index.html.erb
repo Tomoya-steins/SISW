@@ -19,17 +19,11 @@
 
                         <div class="field">
                             <p>
-                                <%= link_to post_path(post) do %>
+                                <%= link_to "#{post.title}-PDF", rails_blob_path(post.pdf_file) %>
+                                <%= link_to "←削除", post_path(post), method: :delete %>
                             </p>
                         </div>
-                        <div class="field">
-                            <p>
-                                <%= post.title %>
-                            </p>
-                        </div>
-                        <% end %>
                         <% end %>
                     </div>
                 </div>
-            </div>
         </section>

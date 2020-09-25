@@ -27,11 +27,12 @@
 
                          <div class="field">
                              <p>
-                                 <%= f.label :image, '投稿画像', class: "label" %>
-                                 <%= f.attachment_field :image, class: "input"  %>
+                                 <%= f.label :pdf_file, 'PDF', class: "label" %>
+                                 <%= f.file_field :pdf_file, class: "input"  %>
                              </p>
-
                          </div>
+                         <%= f.hidden_field :user_id, value: current_user.id %>
+
                          <div class="actions">
                              <p><%= f.submit '投稿', class: "button is-success" %></p>
                          </div>

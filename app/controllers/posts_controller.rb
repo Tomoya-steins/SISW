@@ -12,7 +12,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.user_id = current_user.id
       if @post.save
-      redirect_to post_path(@post)
+      redirect_to root_path
       else
         render :new
       end
@@ -21,26 +21,27 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
+  #def show
+   # @post = Post.find(params[:id])
+  #end
 
-  end
+  #def edit PDFをindexに全て集約させたため
+  #  @post = Post.find(params[:id])
+  #end
 
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to post_path(@post)
-    else
-      render :edit
-    end
-  end
+  #def update
+   # @post = Post.find(params[:id])
+    #if @post.update(post_params)
+     # redirect_to post_path(@post)
+    #else
+     # render :edit
+    #end
+  #end
 
   def destroy
-    Post.find(params[:id]).destroy
+    post = Post.find(params[:id])
+    post.pdf_file.purge
+    post.destroy
     flash[:notice] = "削除されました"
     redirect_to posts_path
   end
@@ -52,6 +53,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :image)
+    params.require(:post).permit(:user_id, :title, :pdf_file)
   end
 end

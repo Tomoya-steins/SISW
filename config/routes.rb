@@ -15,11 +15,11 @@ Rails.application.routes.draw do
   get ':id/change' => 'forgot_password#change'
   post ':id/change' => 'forgot_password#update'
 
-  resources :account_activations, lonly: [:edit]
+  resources :account_activations, only: [:edit]
 
   resources :accounts
   
-  resources :posts
+  resources :posts, only: [:index, :destroy, :new, :create]
 
   resources :personal, only: [:show, :edit, :update]
 
