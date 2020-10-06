@@ -1,29 +1,31 @@
-<section class="hero is-light is-fullheight">
-    <div class="hero-head">
-        <section class="hero is-primary">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        <%=current_user.name %>さんこんにちは!
-                    </h1>
-                </div>
-            </div>
-        </section>
+<body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <div class="inner">
+            <h1>投稿内容一覧</h1>
+        </div>
 
-        <section class="section">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-5">
-                        <p>投稿内容一覧</p>
-                        <% @posts.each do |post| %>
+        <main role="main" class="inner cover">
+            <% @posts.each do |post| %>
+            <h3 class="cover-heading">
+                <%= link_to "#{post.title}-PDF", rails_blob_path(post.pdf_file) %>
+            </h3>
+            <p class="lead">
+                <%= link_to "↑削除", post_path(post), method: :delete, class: "btn btn-lg btn-secondary" %>
+            </p>
+            <% end %>
+        </main>
+    </div>
+</body>
 
-                        <div class="field">
-                            <p>
-                                <%= link_to "#{post.title}-PDF", rails_blob_path(post.pdf_file) %>
-                                <%= link_to "←削除", post_path(post), method: :delete %>
-                            </p>
-                        </div>
-                        <% end %>
-                    </div>
-                </div>
-        </section>
+
+<%#
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+</script>
+<script src="../../assets/js/vendor/popper.min.js"></script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+%>

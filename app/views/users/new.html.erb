@@ -1,72 +1,39 @@
-<section class="hero is-light is-fullheight">
-    <div class="hero-head">
+<body class="text-center">
+    <%= form_with model: @user, url: signup_path, local: true, class: "form-signin" do |f| %>
+    <% if @user.errors.any? %>
+    <ul>
+        <%= @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+    <% end %>
+    <h1 class="h3 mb-3 font-weight-normal">ユーザー登録画面</h1>
 
-        <section class="hero is-primary">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        サインイン
-                    </h1>
-                </div>
-            </div>
-        </section>
+    <%= f.label :name, 'お名前', class: "sr-only" %>
+    <%= f.text_field :name, required: true, class: "form-control", placeholder: "Name"%>
 
-        <section class="section">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-5">
 
-                        <%= form_with model: @user, url: signup_path, local: true do |f| %>
-                        <% if @user.errors.any? %>
-                        <ul>
-                            <%= @user.errors.full_messages.each do |message| %>
-                            <li><%= message %></li>
-                            <% end %>
-                        </ul>
-                        <% end %>
+    <%= f.label :account_id, class: "sr-only"  %>
+    <%= f.text_field :account_id, required: true, class: "form-control", placeholder: "AccountID" %>
 
-                        <div class="field">
-                            <p>
-                                <%= f.label :name, 'お名前' %>
-                                <%= f.text_field :name, required: true, class: "input" %>
-                            </p>
-                        </div>
 
-                        <div class="field">
-                            <p>
-                                <%= f.label :account_id, 'アカウントID' %>
-                                <%= f.text_field :account_id, required: true, class: "input"  %>
-                            </p>
-                        </div>
 
-                        <div class="field">
-                            <p>
-                                <%= f.label :email, 'メールアドレス' %>
-                                <%= f.text_field :email, required: true, class: "input" %>
-                            </p>
-                        </div>
+    <%= f.label :email, class: "sr-only"  %>
+    <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address" %>
 
-                        <div class="field">
-                            <p>
-                                <%= f.label :password, 'パスワード' %>
-                                <%= f.password_field :password, required: true, class: "input"  %>
-                            </p>
-                        </div>
 
-                        <div class="field">
-                            <p>
-                                <%= f.label :password_confirmation, 'パスワード(確認)' %>
-                                <%= f.password_field :password_confirmation, required: true, class: "input"  %>
-                            </p>
-                        </div>
 
-                        <div class="actions">
-                            <p><%= f.submit '送信', class: "button is-success" %></p>
-                        </div>
-                        <% end %>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-</section>
+    <%= f.label :password, class: "sr-only"  %>
+    <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
+
+
+
+    <%= f.label :password_confirmation, class: "sr-only"  %>
+    <%= f.password_field :password_confirmation, required: true, class: "form-control", placeholder: "Password confirmation"  %>
+
+
+
+    <p><%= f.submit '送信', class: "btn btn-lg btn-primary btn-block" %></p>
+
+    <% end %>
+</body>

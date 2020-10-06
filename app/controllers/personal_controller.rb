@@ -26,7 +26,8 @@ class PersonalController < ApplicationController
       if @personal.update(user_password_params)
         redirect_to personal_path
       else
-      render :edit
+        flash.now[:danger] = "編集に失敗しました"
+        render :edit
       end
     else
       render :edit
@@ -35,7 +36,7 @@ class PersonalController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name, :email)
   end
 
   def user_password_params

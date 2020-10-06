@@ -1,32 +1,13 @@
- <section class="hero is-light is-fullheight">
-     <div class="hero-head">
-
-         <section class="hero is-primary">
-             <div class="hero-body">
-                 <div class="container">
-                     <h1 class="title">
-                         ユーザ一覧
-                     </h1>
-                 </div>
-             </div>
-         </section>
-
-         <section class="section">
-             <div class="content is-medium">
-                 <ul　class="has-text-left field">
-                     <% @users_info.each do |info| %>
-                     <li class="field">
-                         <%= info.name %>
-                         <%= info.account_id %>
-                         <%= info.email %>
-                         <%= link_to '編集', edit_account_path(info) %>
-                         <% if current_user.id != info.id %>
-                         <%= link_to '削除', "accounts/#{info.id}", method: :delete %>
-                         <% end %>
-                     </li>
-                     <% end %>
-                 </ul>
-             </div>
-
-
-         </section>
+<body class="text-center">
+    <ul>
+        <% @users_info.each do |info| %>
+        <li>
+            <%= link_to account_path(info) do %>
+            <%= attachment_image_tag info, :profile_image, fallback: "no-image-people.jpg", class: "rounded-circle" %>
+            <%= info.name %>
+            <%= info.account_id %>
+            <% end %>
+        </li>
+        <% end %>
+    </ul>
+</body>

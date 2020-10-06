@@ -3,9 +3,14 @@ class User < ApplicationRecord
     before_save :downcase_email
     before_create :create_activation_digest
     has_many :posts
+    has_many :entries
+    has_many :direct_messages
+    has_many :rooms, through: :entries
+    has_many :messages, dependent: :destroy
     has_secure_password
     validates :password, presence: true, length: { minimum: 6}
     has_secure_token :api_token
+    attachment :profile_image
 
     validates :name, presence: true, length: { maximum: 255}
     validates :account_id, presence: true, uniqueness: true

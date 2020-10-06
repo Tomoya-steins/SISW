@@ -1,0 +1,7 @@
+<%= @user.name %>
+<%= @user.account_id %>
+<%= @user.email %>
+<%= link_to '編集', edit_account_path(@user) %>
+<% unless @user.id == current_user.id %>
+<%= link_to '削除', "accounts/#{@user.id}", method: :delete %>
+<% end %>

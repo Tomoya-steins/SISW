@@ -12,70 +12,73 @@
 
 <body>
     <% if flash[:notice] %>
-    <div class="notification is-info">
-        <p class="notice"><%= notice %></p>
-    </div>
+    <%= notice %></p>
     <% end %>
 
     <% if flash[:alert] %>
-    <div class="notification is-danger">
-        <p class="alert"><%= alert %></p>
-    </div>
+    <%= alert %></p>
     <% end %>
 
-    <nav class="navbar is-warning">
-        <div class="navbar-brand">
+    　　<nav class="navbar navbar-expand navbar-dark bg-info fixed-top">
+        <div class="container-fluid">
             <% if current_user == nil %>
-            <h1 class="title is-4" style="font-family: Comic Sans MS;">SIS</h1>
+            <h1 class="navbar-brand pb-2">SIS</h1>
             <% else %>
-            <h1 class="title is-4" style="font-family: Comic Sans MS;">Sharing Information at school</h1>
+            <h1 class="navbar-brand pb-2">Sharing Information at school</h1>
             <% end %>
-            <div class="navbar-burger burger" data-target="navbarExampleTransparentExample">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
 
-        <div id="navbarExampleTransparentExample" class="navbar-menu">
-            <% if current_user != nil %>
-            <div class="navbar-end">
-                <div class="field is-grouped">
-                    <div class="navbar-item">
-                        <%= link_to  "投稿一覧", root_path, class: "navbar-item button is-primary is-light" %>
-                    </div>
-                    <% if current_user.admin? %>
-                    <div class="navbar-item">
-                        <%= link_to '新規投稿', new_post_path, class: "navbar-item button is-primary is-light" %>
-                    </div>
-                    <%  end %>
-                    <% if current_user.admin? %>
-                    <div class="navbar-item">
-                        <%= link_to 'ユーザ一覧', accounts_path, class: "navbar-item button is-primary is-light" %>
-                    </div>
-                    <% else %>
-                    <div class="navbar-item">
-                        <%= link_to "#{current_user.name}詳細", personal_path(current_user), class: "navbar-item button is-primary is-light"  %>
-                    </div>
-                    <% end %>
-                    <div class="navbar-item">
-                        <%= link_to 'ログアウト', logout_path, method: :delete, class: "navbar-item button is-primary is-light" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% else %>
-        <div class="navbar-end">
-            <div class="field is-grouped">
-                　　 <div class="navbar-item">
-                    <%= link_to 'ログイン', login_path, class: "navbar-item button is-primary is-light" %>
-                </div>
-                <div class="navbar-item">
-                    <%= link_to 'サインアップ', signup_path, class: "navbar-item button is-primary is-light" %>
-                </div>
-            </div>
+            <ul class="navbar-nav align-self-end">
+                <% if current_user != nil %>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to  "チャット", room_path(current_user.id), class: "nav-link" %>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to  "投稿一覧", root_path, class: "nav-link"  %>
+                    </button>
+                </li>
+                <% if current_user.admin? %>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to '新規投稿', new_post_path, class: "nav-link" %>
+                    </button>
+                </li>
+                <%  end %>
+                <% if current_user.admin? %>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to 'ユーザ一覧', accounts_path, class: "nav-link"%>
+                    </button>
+                </li>
+                <% else %>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to "#{current_user.name}詳細", personal_path(current_user), class: "nav-link"%>
+                    </button>
+                </li>
+                <% end %>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link"%>
+                    </button>
+                </li>
+                <% else %>
+                　　 <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to 'ログイン', login_path, class: "nav-link"%>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to 'サインアップ', signup_path, class: "nav-link" %>
+                    </button>
+                </li>
         </div>
         <% end %>
+        </div>
+        </ul>
         </div>
     </nav>
     <%= yield %>

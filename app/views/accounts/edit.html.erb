@@ -1,49 +1,21 @@
- <section class="hero is-light is-fullheight">
-     <div class="hero-head">
+<body class="text-center">
 
-         <section class="hero is-primary">
-             <div class="hero-body">
-                 <div class="container">
-                     <h1 class="title">
-                         <%=@info.name%>-編集
-                     </h1>
-                 </div>
-             </div>
-         </section>
+    <%= form_with model: @info, url: account_path,  local: true do |f|%>
 
-         <section class="section">
-             <div class="container">
-                 <div class="columns is-centered">
-                     <div class="column is-5">
-                         <%= form_with model: @info, url: account_path,  local: true do |f|%>
+    <h1 class="h3 mb-3 font-weight-normal"><%=@info.name%>-編集</h1>
 
-                         <div class="field">
-                             <p>
-                                 <%= f.label :名前 %>
-                                 <%= f.text_field :name, value: @info.name, required: true, class: "input" %>
-                             </p>
-                         </div>
+    <%= f.label :お名前, class: "sr-only" %>
+    <%= f.text_field :name, value: @info.name, required: true, class: "form-control" %>
 
-                         <div class="field">
-                             <p>
-                                 <%= f.label :アカウントID %>
-                                 <%= f.text_field :account_id, value: @info.account_id, required: true, class: "input"  %>
-                             </p>
-                         </div>
+    <%= f.label :アカウントID, class: "sr-only" %>
+    <%= f.text_field :account_id, value: @info.account_id, required: true, class: "form-control"  %>
 
-                         <div class="field">
-                             <p>
-                                 <%= f.label :メールアドレス %>
-                                 <%= f.text_field :email, value: @info.email, required: true, class: "input"  %>
-                             </p>
-                         </div>
+    <%= f.label :メールアドレス, class: "sr-only" %>
+    <%= f.text_field :email, value: @info.email, required: true, class: "form-control"  %>
 
-                         <div class="actions">
-                             <p><%= f.submit '変更', class: "button is-success"%></p>
-                         </div>
 
-                         <% end %>
-                     </div>
-                 </div>
-             </div>
-         </section>
+    <p><%= f.submit '変更', class: "btn btn-lg btn-primary btn-block"%></p>
+
+
+    <% end %>
+</body>

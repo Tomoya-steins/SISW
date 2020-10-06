@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount ActionCable.server => '/cable'
   root 'posts#index'
 
   get 'signup' => 'users#new'
@@ -22,6 +23,11 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :destroy, :new, :create]
 
   resources :personal, only: [:show, :edit, :update]
+
+  resources :rooms, only: [:show]
+  get '/show_additionally', to: 'rooms#show_additionally'
+
+  resources :messages, only: [:create]
 
   namespace :api do
     get 'login' => 'login#show'
