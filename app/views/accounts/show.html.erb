@@ -1,5 +1,5 @@
 <%= @user.name %>
-<%= @user.account_id %>
+<%= @user.belonging %>
 <%= @user.email %>
 <%= link_to '編集', edit_account_path(@user) %>
 <% unless @user.id == current_user.id %>

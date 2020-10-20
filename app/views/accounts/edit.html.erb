@@ -7,8 +7,8 @@
     <%= f.label :お名前, class: "sr-only" %>
     <%= f.text_field :name, value: @info.name, required: true, class: "form-control" %>
 
-    <%= f.label :アカウントID, class: "sr-only" %>
-    <%= f.text_field :account_id, value: @info.account_id, required: true, class: "form-control"  %>
+    <%= f.label :所属大学, class: "sr-only" %>
+    <%= f.text_field :belonging, value: @info.belonging, required: true, class: "form-control"  %>
 
     <%= f.label :メールアドレス, class: "sr-only" %>
     <%= f.text_field :email, value: @info.email, required: true, class: "form-control"  %>
@@ -19,5 +19,3 @@
 
     <% end %>
 </body>
-
-関係ない奴

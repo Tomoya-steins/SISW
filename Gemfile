@@ -58,3 +58,6 @@ gem "bulma-rails"
 gem 'pry-rails'
 gem 'faker'
 gem 'bootstrap_form'
+gem 'jquery-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'

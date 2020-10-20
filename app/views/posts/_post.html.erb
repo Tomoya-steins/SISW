@@ -1,0 +1,4 @@
+<p id="post-<%= post.id %>">
+    <%= post.body %>
+    <%= link_to '削除', post_path(post), method: :delete, data: { confirm: '削除しますか?', remote:true } %>
+</p>

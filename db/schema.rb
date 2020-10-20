@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_29_092232) do
+ActiveRecord::Schema.define(version: 2020_10_18_032142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,21 @@ ActiveRecord::Schema.define(version: 2020_09_29_092232) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.datetime "start"
+    t.datetime "end"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "firms", force: :cascade do |t|
+    t.string "firm_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.text "content"
@@ -45,15 +60,14 @@ ActiveRecord::Schema.define(version: 2020_09_29_092232) do
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "body"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "account_id"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -65,6 +79,9 @@ ActiveRecord::Schema.define(version: 2020_09_29_092232) do
     t.boolean "activated", default: false
     t.datetime "activated_at"
     t.string "profile_image_id"
+    t.string "belonging"
+    t.string "firm_name"
+    t.text "profile"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

@@ -4,13 +4,12 @@
 
     <h1 class="h3 mb-3 font-weight-normal"><%= @personal.name %>-編集</h1>
 
-    <%= f.label :お名前, class: "sr-only" %>
-    <%= f.text_field :name, value: @personal.name, required: true, class: "form-control" %>
 
+    <%= f.label :プロフィール画像, class: "sr-only" %>
+    <%= f.attachment_field :profile_image, required: true%>
 
-
-    <%= f.label :Eメール, class: "sr-only" %>
-    <%= f.text_field :email, value: @personal.email, required: true, class: "form-control" %>
+    <%= f.label :プロフィール, class: "sr-only" %>
+    <%= f.text_area :profile, value: @personal.profile, required: true, class: "form-control" %>
 
 
     <p><%= f.submit '変更', class: "btn btn-lg btn-primary btn-block" %></p>

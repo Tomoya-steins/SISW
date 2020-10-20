@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
+  resources :events
   mount ActionCable.server => '/cable'
-  root 'posts#index'
+  root 'events#index'
 
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
+
+  get 'signup_firm' => 'users#new_firm'
+  post 'signup_firm' => 'users#create_firm'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
@@ -19,6 +23,10 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
 
   resources :accounts
+
+  resources :events
+
+  resources :firms, only: [:index, :create, :destroy]
   
   resources :posts, only: [:index, :destroy, :new, :create]
 

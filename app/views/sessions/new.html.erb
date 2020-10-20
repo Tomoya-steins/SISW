@@ -4,8 +4,8 @@
 
     <h1 class="h3 mb-3 font-weight-normal">ログイン画面</h1>
 
-    <%= f.label :account_id, class: "sr-only" %>
-    <%= f.text_field :account_id, required: true, class: "form-control", placeholder: "AccountID" %>
+    <%= f.label :belonging, class: "sr-only" %>
+    <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学,法人" %>
 
     <%= f.label :email, class: "sr-only"  %>
     <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address"   %>
@@ -17,7 +17,7 @@
     <div class="checkbox mb-3">
         <%= f.label :remember_me, class:"checkbox" do %>
         <%= f.check_box :remember_me %>
-        <span>コンピュータに保存</span>
+        <span>保持する</span>
         <% end %>
     </div>
 

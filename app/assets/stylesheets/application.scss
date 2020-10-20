@@ -9,9 +9,10 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
+ 
  *= require_tree .
  *= require_self
+ *= require fullcalendar
  */
 @import "bootstrap/scss/bootstrap";
 
@@ -21,12 +22,12 @@
   padding: 1rem 1rem 8rem 1rem;
 }
 
-footer {
-  max-width: 768px;
-  padding: 1rem;
-  margin: 0 auto;
-  background-color: white;
-}
+// footer {
+//   max-width: 768px;
+//   padding: 1rem;
+//   margin: 0 auto;
+//   background-color: white;
+// }
 
 .btn-primary.disabled {
   background-color: #6c757d;
@@ -38,11 +39,6 @@ footer {
   resize: none;
 }
 
-.cover {
-  background-image: url("<%= asset_path('background-image.jpg') %>");
-  background-size: cover;
-}
-
 body {
-  padding-top: 60px;
+  padding-top: 90px;
 }

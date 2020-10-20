@@ -8,6 +8,8 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
 </head>
 
 <body>
@@ -36,13 +38,13 @@
                 </li>
                 <li class="nav-item">
                     <button class="btn btn-outline-dark" type="button">
-                        <%= link_to  "投稿一覧", root_path, class: "nav-link"  %>
+                        <%= link_to  "カレンダー", root_path, class: "nav-link"  %>
                     </button>
                 </li>
                 <% if current_user.admin? %>
                 <li class="nav-item">
                     <button class="btn btn-outline-dark" type="button">
-                        <%= link_to '新規投稿', new_post_path, class: "nav-link" %>
+                        <%= link_to '投稿', posts_path, class: "nav-link" %>
                     </button>
                 </li>
                 <%  end %>
@@ -59,6 +61,13 @@
                     </button>
                 </li>
                 <% end %>
+                <% if current_user.admin? %>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to '法人登録', firms_path, class: "nav-link"%>
+                    </button>
+                </li>
+                <%  end %>
                 <li class="nav-item">
                     <button class="btn btn-outline-dark" type="button">
                         <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link"%>
@@ -72,7 +81,12 @@
                 </li>
                 <li class="nav-item">
                     <button class="btn btn-outline-dark" type="button">
-                        <%= link_to 'サインアップ', signup_path, class: "nav-link" %>
+                        <%= link_to 'サインアップ(学生)', signup_path, class: "nav-link" %>
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-outline-dark" type="button">
+                        <%= link_to 'サインアップ(法人)', signup_firm_path, class: "nav-link"%>
                     </button>
                 </li>
         </div>
@@ -81,7 +95,9 @@
         </ul>
         </div>
     </nav>
-    <%= yield %>
-</body>
+
+    <body data-turbolinks="false">
+        <%= yield %>
+    </body>
 
 </html>

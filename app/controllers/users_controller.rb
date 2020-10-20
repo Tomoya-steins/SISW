@@ -14,9 +14,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def new_firm
+    @user = User.new
+  end
+
+  def create_firm
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:name, :account_id, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :belonging, :email, :password, :password_confirmation)
   end
 end

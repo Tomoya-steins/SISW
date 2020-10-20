@@ -8,11 +8,13 @@ class PersonalController < ApplicationController
   end
 
   def update
+
     @personal = User.find(params[:id])
     if @personal.update(user_params)
       redirect_to personal_path, notice: "更新されました"
     else
       render :edit
+      flash[:alert] = "保存できませんでした"
     end
   end
 
@@ -22,7 +24,7 @@ class PersonalController < ApplicationController
 
   def password_update
     @personal = User.find(params[:id])
-    if cureent_user.name == @personal.name && cureent_user.account_id == @personal.account_id
+    if cureent_user.name == @personal.name && cureent_user.belonging == @personal.belonging
       if @personal.update(user_password_params)
         redirect_to personal_path
       else
@@ -36,7 +38,7 @@ class PersonalController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:profile_image, :profile)
   end
 
   def user_password_params

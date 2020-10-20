@@ -28,7 +28,10 @@
                                             <strong><%= @personal.name %></strong>
                                         </td>
                                         <td class="is-size-4">
-                                            <%= @personal.account_id %>
+                                            <%= @personal.belonging %>
+                                        </td>
+                                        <td class="is-size-4">
+                                            <%= @personal.profile %>
                                         </td>
                                         <td>
                                             <%= link_to '編集', edit_personal_path(@personal), class: "button is-primary" %>

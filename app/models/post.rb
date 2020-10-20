@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
   belongs_to :user, optional: true
-  has_one_attached :pdf_file
+  # has_one_attached :pdf_file
 end

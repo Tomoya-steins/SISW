@@ -1,25 +1,34 @@
 class PostsController < ApplicationController
   before_action :login_required
+  before_action :set_post, only: %i[destroy]
   def index
     @posts = Post.all
   end
 
-  def new
-    @post = Post.new
+  def create
+    @post = Post.create!(post_params)
   end
 
-  def create
-    @post = Post.new(post_params)
-    if @post.user_id = current_user.id
-      if @post.save
-      redirect_to root_path
-      else
-        render :new
-      end
-    else
-      render :new
-    end
+  def destroy
+    @post.destroy!
   end
+
+  # def new
+  #   @post = Post.new
+  # end
+
+  # def create
+  #   @post = Post.new(post_params)
+  #   if @post.user_id = current_user.id
+  #     if @post.save
+  #     redirect_to root_path
+  #     else
+  #       render :new
+  #     end
+  #   else
+  #     render :new
+  #   end
+  # end
 
   #def show
    # @post = Post.find(params[:id])
@@ -38,13 +47,13 @@ class PostsController < ApplicationController
     #end
   #end
 
-  def destroy
-    post = Post.find(params[:id])
-    post.pdf_file.purge
-    post.destroy
-    flash[:notice] = "削除されました"
-    redirect_to posts_path
-  end
+  # def destroy
+  #   post = Post.find(params[:id])
+  #   post.pdf_file.purge
+  #   post.destroy
+  #   flash[:notice] = "削除されました"
+  #   redirect_to posts_path
+  # end
 
   private
 
@@ -52,7 +61,15 @@ class PostsController < ApplicationController
       redirect_to login_path unless logged_in?
   end
 
-  def post_params
-    params.require(:post).permit(:user_id, :title, :pdf_file)
+  def set_post
+    @post = Post.find(params[:id])
   end
+
+  #仮置き
+  def post_params
+    params.require(:post).permit(:user_id, :body)
+  end
+  # def post_params
+  #   params.require(:post).permit(:user_id, :title, :pdf_file)
+  # end
 end

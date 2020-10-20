@@ -5,7 +5,7 @@
             <%= link_to account_path(info) do %>
             <%= attachment_image_tag info, :profile_image, fallback: "no-image-people.jpg", class: "rounded-circle" %>
             <%= info.name %>
-            <%= info.account_id %>
+            <%= info.belonging %>
             <% end %>
         </li>
         <% end %>

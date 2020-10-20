@@ -1,0 +1,5 @@
+<%= form_with model: Post.new do |f| %>
+<%= f.text_area :body %>
+<%= f.hidden_field :user_id, value: current_user.id %>
+<%= f.submit "投稿" %>
+<% end %>
