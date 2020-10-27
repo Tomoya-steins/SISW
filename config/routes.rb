@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
   resources :firms, only: [:index, :create, :destroy]
   
-  resources :posts, only: [:index, :destroy, :new, :create]
+  resources :posts
 
   resources :personal, only: [:show, :edit, :update]
 
@@ -39,6 +39,5 @@ Rails.application.routes.draw do
 
   namespace :api do
     get 'login' => 'login#show'
-    resources :posts
-  end
+    end
 end

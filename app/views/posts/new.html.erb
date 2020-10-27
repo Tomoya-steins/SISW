@@ -1,20 +1,5 @@
- <body class="text-center">
+<h1>新規投稿</h1>
 
-     <%= form_with model: @post, url: posts_path, local: true do |f| %>
-     <%= flash[:alert] %>
+<%= render 'form', post: @post %>
 
-     <h1 class="h3 mb-3 font-weight-normal">新規投稿</h1>
-
-     <p>
-         <%= f.label :title, 'タイトル', class: "sr-only" %>
-         <%= f.text_field :title, class: "form-control", placeholder: "タイトルを入力" %>
-     </p>
-
-     <p>
-         <%= f.label :pdf_file, 'PDF', class: "label" %> <%= f.file_field :pdf_file, class: "input"  %>
-         <%= f.hidden_field :user_id, value: current_user.id %>
-     </p>
-
-     <p><%= f.submit '投稿', class: "btn btn-lg btn-primary btn-block" %></p>
-
-     <% end %>
+<%= link_to '投稿一覧', posts_path %>

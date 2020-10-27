@@ -20,3 +20,7 @@ require("fullcalendar/fullcalendar.js");
 //= require moment
 //= require fullcalendar
 //= require jquery_ujs
+
+require("trix");
+require("@rails/actiontext");
+// import "../trix-editor-overrides";

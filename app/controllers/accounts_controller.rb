@@ -17,7 +17,7 @@ class AccountsController < ApplicationController
 
   def update
     @info = User.find(params[:id])
-    if @info.update_attributes(user_params)
+    if @info.update(user_params)
       redirect_to accounts_path, notice: "更新されました"
     else
       render :edit

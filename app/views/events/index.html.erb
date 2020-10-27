@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Events</h1>
-
+<h1>カレンダー</h1>
+<% if current_user.admin? %>
 <table>
     <thead>
         <tr>
@@ -20,9 +20,9 @@
             <td><%= event.body %></td>
             <td><%= event.start %></td>
             <td><%= event.end %></td>
-            <td><%= link_to 'Show', event %></td>
-            <td><%= link_to 'Edit', edit_event_path(event) %></td>
-            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to '詳細', event %></td>
+            <td><%= link_to '編集', edit_event_path(event) %></td>
+            <td><%= link_to '削除', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
         <% end %>
     </tbody>
@@ -31,6 +31,8 @@
 <br>
 
 <%= link_to 'New Event', new_event_path %>
+
+<% end %>
 
 
 

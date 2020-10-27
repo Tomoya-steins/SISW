@@ -41,13 +41,11 @@
                         <%= link_to  "カレンダー", root_path, class: "nav-link"  %>
                     </button>
                 </li>
-                <% if current_user.admin? %>
                 <li class="nav-item">
                     <button class="btn btn-outline-dark" type="button">
                         <%= link_to '投稿', posts_path, class: "nav-link" %>
                     </button>
                 </li>
-                <%  end %>
                 <% if current_user.admin? %>
                 <li class="nav-item">
                     <button class="btn btn-outline-dark" type="button">
