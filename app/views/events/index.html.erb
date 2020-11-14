@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <h1>カレンダー</h1>
-<% if current_user.admin? %>
 <table>
     <thead>
         <tr>
@@ -31,8 +30,6 @@
 <br>
 
 <%= link_to 'New Event', new_event_path %>
-
-<% end %>
 
 
 
