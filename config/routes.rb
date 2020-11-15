@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :events
-  mount ActionCable.server => '/cable'
   root 'events#index'
 
   get 'signup' => 'users#new'
@@ -31,9 +30,6 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :personal, only: [:show, :edit, :update]
-
-  resources :rooms, only: [:show]
-  get '/show_additionally', to: 'rooms#show_additionally'
 
   resources :messages, only: [:create]
 
