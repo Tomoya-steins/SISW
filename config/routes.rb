@@ -8,22 +8,16 @@ Rails.application.routes.draw do
   get 'signup_firm' => 'users#new_firm'
   post 'signup_firm' => 'users#create_firm'
 
+  get 'signup_wait' => 'users#wait'
+
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
 
   delete 'logout' => 'sessions#destroy'
 
-  get 'forgot' => 'forgot_password#input'
-  post 'forgot' => 'forgot_password#get'
-
-  get ':id/change' => 'forgot_password#change'
-  post ':id/change' => 'forgot_password#update'
-
   resources :account_activations, only: [:edit]
 
   resources :accounts
-
-  resources :events
 
   resources :firms, only: [:index, :create, :destroy]
   

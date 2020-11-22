@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       @user.send_activation_email
       # UserMailer.account_activation(@user).deliver_now
       flash[:info] = "入力されたEメールから有効化をお願いします。"
-      redirect_to login_path
+      redirect_to signup_wait_path
     else
     render :new
     end
@@ -20,6 +20,10 @@ class UsersController < ApplicationController
   end
 
   def create_firm
+  end
+
+  def wait
+    
   end
 
   private
