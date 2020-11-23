@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:new, :edit, :update, :create, :destroy]
 
   # GET /posts
   # GET /posts.json
@@ -71,4 +72,8 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :content)
     end
+
+    def admin_user
+      redirect_to(login_path) unless current_user.admin?
+  end
 end

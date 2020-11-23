@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user, only: [:new, :edit, :update, :create, :destroy]
 
   # GET /events
   # GET /events.json
@@ -71,5 +72,9 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title, :body, :start, :end)
     end
+
+    def admin_user
+      redirect_to(login_path) unless current_user.admin?
+  end
 end
 
