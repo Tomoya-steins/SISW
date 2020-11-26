@@ -1,5 +1,5 @@
 <body class="text-center">
-    <%= form_with @user, url: password_resets_path(params[:id]), local: true, class: "form-signin" do |f| %>
+    <%= form_for(@user, url: password_reset_path(params[:id])) do |f| %>
     <%= flash[:alert] %>
 
     <h1 class="h3 mb-3 font-weight-normal">パスワード変更</h1>
