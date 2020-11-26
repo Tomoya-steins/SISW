@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   resources :events
   root 'events#index'
 
@@ -26,6 +28,8 @@ Rails.application.routes.draw do
   resources :personal, only: [:show, :edit, :update]
 
   resources :messages, only: [:create]
+
+  resources :password_resets, only: [:new, :create, :edit, :update]
 
   namespace :api do
     get 'login' => 'login#show'

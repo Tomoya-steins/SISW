@@ -21,7 +21,7 @@
         <% end %>
     </div>
 
-    <p>パスワードをお忘れ,または変更する</p>
+    <%= link_to "パスワードをお忘れ,または変更する方はこちら", new_password_reset_path %>
 
     <%= f.submit 'ログインする', class: "btn btn-lg btn-primary btn-block" %>
     <% end %>
