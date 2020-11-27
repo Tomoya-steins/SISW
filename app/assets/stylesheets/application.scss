@@ -16,29 +16,122 @@
  */
 @import "bootstrap/scss/bootstrap";
 
-#message-container {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 1rem 1rem 8rem 1rem;
+* {
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: "Gruppo", cursive;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: rgb(255, 255, 255);
 }
 
-// footer {
-//   max-width: 768px;
-//   padding: 1rem;
-//   margin: 0 auto;
-//   background-color: white;
+// .position-absolute {
+//   z-index: 1;
+//   top: 0;
 // }
 
-.btn-primary.disabled {
-  background-color: #6c757d;
-  border-color: #6c757d;
-  cursor: auto;
+.position-fixed {
+  top: 0;
+  margin: 30px 600px;
+  width: 700px;
 }
 
-#message_content {
-  resize: none;
+.menu-icon {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  margin: 10px 15px;
+  transform: scale(0.8);
+  padding: 0;
+  cursor: pointer;
+  z-index: 20;
+}
+.menu-bar {
+  width: 50px;
+  height: 5px;
+  background: rgb(190, 190, 190);
+  position: absolute;
+  transition: all 0.3s;
+}
+.menu-bar1 {
+  margin-top: 9px;
+}
+.menu-bar2 {
+  margin-top: 23px;
+}
+.menu-bar3 {
+  margin-top: 37px;
+}
+.menu-icon.hover .menu-bar1 {
+  -webkit-transform: rotate(45deg) scaleX(0.7);
+  margin-top: 22px;
+}
+.menu-icon.hover .menu-bar2 {
+  opacity: 0;
+}
+.menu-icon.hover .menu-bar3 {
+  -webkit-transform: rotate(-45deg) scaleX(0.7);
+  margin-top: 22px;
 }
 
-body {
-  padding-top: 90px;
+.menu {
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+.menu-con {
+  -webkit-flex-grow: 1;
+  flex-basis: 0;
+  flex-grow: 1;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: space-around;
+  position: relative;
+  top: -100%;
+  transition: all 0.5s;
+  z-index: 2;
+}
+.menu-con a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  opacity: 2;
+  background: rgba(0, 0, 0, 0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.menu-con:hover a:before {
+  background: rgba(0, 0, 0, 0.2);
+}
+.menu-con a {
+  height: 20px;
+  -webkit-align-self: center;
+  color: white;
+  font-size: 25px;
+  z-index: 4;
+  cursor: pointer;
+}
+@media screen and (max-width: 600px) {
+  .menu-con {
+    min-width: 50%;
+  }
+}
+@media screen and (max-width: 350px) {
+  .menu-con {
+    min-width: 100%;
+  }
 }

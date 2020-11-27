@@ -21,75 +21,121 @@
     <%= alert %></p>
     <% end %>
 
-    　　<nav class="navbar navbar-expand navbar-dark bg-info fixed-top">
-        <div class="container-fluid">
-            <% if current_user == nil %>
-            <h1 class="navbar-brand pb-2">SIS</h1>
-            <% else %>
-            <h1 class="navbar-brand pb-2">Sharing Information at school</h1>
-            <% end %>
 
-            <ul class="navbar-nav align-self-end">
-                <% if current_user != nil %>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to  "カレンダー", root_path, class: "nav-link"  %>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to '投稿', posts_path, class: "nav-link" %>
-                    </button>
-                </li>
-                <% if current_user.admin? %>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to 'ユーザ一覧', accounts_path, class: "nav-link"%>
-                    </button>
-                </li>
-                <% else %>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to "#{current_user.name}詳細", personal_path(current_user), class: "nav-link"%>
-                    </button>
-                </li>
-                <% end %>
-                <% if current_user.admin? %>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to '法人登録', firms_path, class: "nav-link"%>
-                    </button>
-                </li>
-                <%  end %>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-link"%>
-                    </button>
-                </li>
-                <% else %>
-                　　 <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to 'ログイン', login_path, class: "nav-link"%>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to 'サインアップ(学生)', signup_path, class: "nav-link" %>
-                    </button>
-                </li>
-                <li class="nav-item">
-                    <button class="btn btn-outline-dark" type="button">
-                        <%= link_to 'サインアップ(法人)', signup_firm_path, class: "nav-link"%>
-                    </button>
-                </li>
+
+    <div class="menu-icon" onclick="this.classList.toggle('hover');Drop(0)">
+        <div class="menu-bar menu-bar1"></div>
+        <div class="menu-bar menu-bar2"></div>
+        <div class="menu-bar menu-bar3"></div>
+    </div>
+    <div class="menu">
+        <% if current_user != nil %>
+        <div class="menu-con" style="background:IndianRed;">
+            <a>
+                <%= link_to  "カレンダー", root_path  %>
+            </a>
+        </div>
+        <div class="menu-con" style="background:rgb(160,160,170);">
+            <a>
+                <%= link_to '投稿', posts_path %>
+            </a>
+        </div>
+        <% if current_user.admin? %>
+        <div class="menu-con" style="background:teal;">
+            <a>
+                <%= link_to 'ユーザ一覧', accounts_path %>
+            </a>
+        </div>
+        <% else %>
+        <div class="menu-con" style="background:rgb(70,70,70);">
+            <a>
+                <%= link_to "#{current_user.name}詳細", personal_path(current_user) %>
+            </a>
         </div>
         <% end %>
+        <% if current_user.admin? %>
+        <div class="menu-con" style="background:mediumseagreen;">
+            <a>
+                <%= link_to '法人登録', firms_path %>
+            </a>
         </div>
-        </ul>
+        <%  end %>
+        <div class="menu-con" style="background:rgb(160,160,170);">
+            <a>
+                <%= link_to 'ログアウト', logout_path, method: :delete %>
+            </a>
         </div>
-    </nav>
+        <% else %>
+        <div class="menu-con" style="background:IndianRed;">
+            <a>
+                <%= link_to 'ログイン', login_path %>
+            </a>
+        </div>
+        <div class="menu-con" style="background:teal;">
+            <a>
+                <%= link_to 'サインアップ(学生)', signup_path %>
+            </a>
+        </div>
+        <div class="menu-con" style="background:mediumseagreen;">
+            <a>
+                <%= link_to 'サインアップ(法人)', signup_firm_path %>
+            </a>
+        </div>
+        <% end %>
+    </div>
+
 
     <body data-turbolinks="false">
+        <script>
+            var open = false;
+
+            function Drop(n) {
+                var i;
+                if (open == false) {
+                    for (i = n; i < 5; i++) {
+                        Drp(i)
+                    }
+                    open = true
+                } else if (open == true) {
+                    for (i = n; i < 5; i++) {
+                        Cls(i)
+                    }
+                    open = false
+                }
+            }
+
+            function Drp(n) {
+                var elem = document.getElementsByClassName("menu-con")[n];
+                var pos = -1 * window.innerHeight - n * 100;
+                var id = setInterval(frame, 5);
+
+                function frame() {
+                    if (pos >= -10) {
+                        clearInterval(id);
+                        elem.style.top = 0 + 'px';
+                    } else {
+                        pos += 10;
+                        elem.style.top = pos + 'px';
+                    }
+                }
+            }
+
+            function Cls(n) {
+                var elems = document.getElementsByClassName("menu-con")[n];
+                var poss = 0;
+                var ids = setInterval(frames, 5);
+
+                function frames() {
+                    if (poss <= -1 * window.innerHeight) {
+                        clearInterval(ids);
+                        elems.style.top = -1 * window.innerHeight + 'px';
+                    } else {
+                        poss += -7 - n * 2;
+                        elems.style.top = poss + 'px';
+                    }
+                }
+            }
+        </script>
         <%= yield %>
     </body>
 

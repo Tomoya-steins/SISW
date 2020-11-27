@@ -1,39 +1,41 @@
 <body class="text-center">
-    <%= form_with model: @user, url: signup_path, local: true, class: "form-signin" do |f| %>
-    <% if @user.errors.any? %>
-    <ul>
-        <%= @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+    <div class="position-fixed">
+        <%= form_with model: @user, url: signup_path, local: true, class: "form-signin" do |f| %>
+        <% if @user.errors.any? %>
+        <ul>
+            <%= @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
         <% end %>
-    </ul>
-    <% end %>
-    <h1 class="h3 mb-3 font-weight-normal">ユーザー登録画面(学生)</h1>
+        <h1 class="h3 mb-3 font-weight-normal">ユーザー登録画面(学生)</h1>
 
-    <%= f.label :name, class: "sr-only" %>
-    <%= f.text_field :name, required: true, class: "form-control", placeholder: "氏名"%>
+        <%= f.label :name, class: "sr-only" %>
+        <%= f.text_field :name, required: true, class: "form-control", placeholder: "氏名"%>
 
 
-    <%= f.label :belonging, class: "sr-only"  %>
-    <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学" %>
+        <%= f.label :belonging, class: "sr-only"  %>
+        <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学" %>
 
 
 
-    <%= f.label :email, class: "sr-only"  %>
-    <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address" %>
+        <%= f.label :email, class: "sr-only"  %>
+        <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address" %>
 
 
 
-    <%= f.label :password, class: "sr-only"  %>
-    <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
+        <%= f.label :password, class: "sr-only"  %>
+        <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
 
 
 
-    <%= f.label :password_confirmation, class: "sr-only"  %>
-    <%= f.password_field :password_confirmation, required: true, class: "form-control", placeholder: "Password confirmation"  %>
+        <%= f.label :password_confirmation, class: "sr-only"  %>
+        <%= f.password_field :password_confirmation, required: true, class: "form-control", placeholder: "Password confirmation"  %>
 
 
 
-    <p><%= f.submit '送信', class: "btn btn-lg btn-primary btn-block" %></p>
+        <p><%= f.submit '送信', class: "btn btn-lg btn-primary btn-block" %></p>
+        <% end %>
 
-    <% end %>
+    </div>
 </body>
