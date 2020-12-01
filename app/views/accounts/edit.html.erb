@@ -1,21 +1,23 @@
 <body class="text-center">
+    <div class="position-fixed">
 
-    <%= form_with model: @info, url: account_path,  local: true do |f|%>
+        <%= form_with model: @info, url: account_path,  local: true do |f|%>
 
-    <h1 class="h3 mb-3 font-weight-normal"><%=@info.name%>-編集</h1>
+        <h1 class="h3 mb-3 font-weight-normal"><%=@info.name%>-編集</h1>
 
-    <%= f.label :お名前, class: "sr-only" %>
-    <%= f.text_field :name, value: @info.name, required: true, class: "form-control" %>
+        <%= f.label :お名前, class: "sr-only" %>
+        <%= f.text_field :name, value: @info.name, required: true, class: "form-control" %>
 
-    <%= f.label :所属大学, class: "sr-only" %>
-    <%= f.text_field :belonging, value: @info.belonging, required: true, class: "form-control"  %>
+        <%= f.label :所属大学, class: "sr-only" %>
+        <%= f.text_field :belonging, value: @info.belonging, required: true, class: "form-control"  %>
 
-    <%= f.label :メールアドレス, class: "sr-only" %>
-    <%= f.text_field :email, value: @info.email, required: true, class: "form-control"  %>
-
-
-    <p><%= f.submit '変更', class: "btn btn-lg btn-primary btn-block"%></p>
+        <%= f.label :メールアドレス, class: "sr-only" %>
+        <%= f.text_field :email, value: @info.email, required: true, class: "form-control"  %>
 
 
-    <% end %>
+        <p><%= f.submit '変更', class: "btn btn-lg btn-primary btn-block"%></p>
+
+
+        <% end %>
+    </div>
 </body>

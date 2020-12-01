@@ -15,7 +15,7 @@ User.create!(
         name: "生徒", belonging: "富山大学", email: "test@gmail.com", password: "password", password_confirmation: "password", admin: false, activated: true, activated_at: Time.now, profile: "どうも富山県立大学生でございます。"
     },
     {
-        name: "企業", belonging: "株式会社クスリのアオキ", email: "aoki@gmail.com", password: "kusurinoaoki", password_confirmation: "kusurinoaoki", admin: false, activated: true, activated_at: Time.now, profile: "どうも株式会社クスリのアオキでございます。"
+        name: "株式会社クスリのアオキ", belonging: "株式会社クスリのアオキ", email: "aoki@gmail.com", password: "kusurinoaoki", password_confirmation: "kusurinoaoki", admin: false, activated: true, activated_at: Time.now, profile: "どうも株式会社クスリのアオキでございます。"
     }
     ]
 )

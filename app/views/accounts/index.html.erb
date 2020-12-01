@@ -1,13 +1,15 @@
 <body class="text-center">
-    <ul>
-        <% @users_info.each do |info| %>
-        <li>
-            <%= link_to account_path(info) do %>
-            <%= attachment_image_tag info, :profile_image, fallback: "no-image-people.jpg", class: "rounded-circle" %>
-            <%= info.name %>
-            <%= info.belonging %>
+    <div class="position-fixed">
+        <ul>
+            <% @users_info.each do |info| %>
+            <li>
+                <%= link_to account_path(info) do %>
+                <%= attachment_image_tag info, :profile_image, fallback: "no-image-people.jpg", class: "rounded-circle" %>
+                <%= info.name %>
+                <%= info.belonging %>
+                <% end %>
+            </li>
             <% end %>
-        </li>
-        <% end %>
-    </ul>
+        </ul>
+    </div>
 </body>

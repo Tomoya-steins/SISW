@@ -6,7 +6,7 @@ class User < ApplicationRecord
     has_many :messages, dependent: :destroy
    
     has_secure_password
-    validates :password, presence: true, length: { minimum: 6}
+    validates :password, presence: true, length: { minimum: 6}, on: :create
     has_secure_token :api_token
     attachment :profile_image
 

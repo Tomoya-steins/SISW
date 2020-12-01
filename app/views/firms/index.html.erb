@@ -1,12 +1,14 @@
-<%= form_with model: @firm, url: firms_path, local: true, class: "form-signin" do |f| %>
+ <div class="position-fixed">
+     <%= form_with model: @firm, url: firms_path, local: true, class: "form-signin" do |f| %>
 
-<%= f.label :firm_name, class: "sr-only" %>
-<%= f.text_field :firm_name, required: true, class: "form-control", placeholder: "法人名" %>
+     <%= f.label :firm_name, class: "sr-only" %>
+     <%= f.text_field :firm_name, required: true, class: "form-control", placeholder: "法人名" %>
 
-<p><%= f.submit '送信', class: "btn btn-lg btn-primary btn-block" %></p>
-<% end %>
+     <p><%= f.submit '送信', class: "btn btn-lg btn-primary btn-block" %></p>
+     <% end %>
 
-<% @firms.each do |fi|%>
-<p><%= fi.firm_name %></p>
-<button><%= link_to '削除', firm_path(fi), method: :delete %></button>
-<% end %>
+     <% @firms.each do |fi|%>
+     <p><%= fi.firm_name %></p>
+     <button><%= link_to '削除', firm_path(fi), method: :delete %></button>
+     <% end %>
+ </div>

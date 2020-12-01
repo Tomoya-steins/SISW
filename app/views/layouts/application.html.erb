@@ -13,15 +13,6 @@
 </head>
 
 <body>
-    <% if flash[:notice] %>
-    <%= notice %></p>
-    <% end %>
-
-    <% if flash[:alert] %>
-    <%= alert %></p>
-    <% end %>
-
-
 
     <div class="menu-icon" onclick="this.classList.toggle('hover');Drop(0)">
         <div class="menu-bar menu-bar1"></div>
@@ -83,6 +74,14 @@
         </div>
         <% end %>
     </div>
+
+    <% if flash[:notice] %>
+    <%= notice %></p>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <%= alert %></p>
+    <% end %>
 
 
     <body data-turbolinks="false">
