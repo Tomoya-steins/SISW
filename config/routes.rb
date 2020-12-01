@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
   resources :events
-  root 'events#index'
+  root 'users#top'
 
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'

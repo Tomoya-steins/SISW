@@ -7,7 +7,7 @@ class AccountActivationsController < ApplicationController
             # user.update_attribute(:activated, true)
             login user
             flash[:success] = "有効化しました!"
-            redirect_to root_path
+            redirect_to events_path
         else
             flash[:danger] = "出来ませんでした。"
             redirect_to login_path
