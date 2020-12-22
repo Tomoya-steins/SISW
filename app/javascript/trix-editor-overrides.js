@@ -1,4 +1,7 @@
 Window.addEventListener("trix-file-accept", function (event) {
-  event.preventDefault();
-  alert("File attachment not supported!");
+  const maxFileSize = 1024 * 1024;
+  if (event.file.size > maxFileSize) {
+    event.preventDefault();
+    alert("ファイルのサイズが1MBを超えています");
+  }
 });

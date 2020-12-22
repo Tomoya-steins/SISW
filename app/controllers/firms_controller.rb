@@ -1,7 +1,7 @@
 class FirmsController < ApplicationController
     before_action :admin_user
     def index
-      @firms = Firm.all
+      @firms = Firm.all.order(created_at: :desc).page(params[:page]).per(3)
       @firm = Firm.new
     end
 

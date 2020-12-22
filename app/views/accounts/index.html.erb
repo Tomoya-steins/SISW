@@ -1,15 +1,34 @@
-<body class="text-center">
-    <div class="position-fixed">
-        <ul>
+<div class="container">
+    <table id="example" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">氏名</th>
+                <th scope="col">所属</th>
+                <th scope="col">メールアドレス</th>
+                <th scope="col">メニュー</th>
+            </tr>
+        </thead>
+        <tbody>
             <% @users_info.each do |info| %>
-            <li>
-                <%= link_to account_path(info) do %>
-                <%= attachment_image_tag info, :profile_image, fallback: "no-image-people.jpg", class: "rounded-circle" %>
-                <%= info.name %>
-                <%= info.belonging %>
-                <% end %>
-            </li>
+            <tr>
+                <td><%= info.name %></td>
+                <td><%= info.belonging %></td>
+                <td><%= info.email %></td>
+                <td>
+                    <% unless current_user.id == info.id %>
+                    <button class="btn  btn-outline-info  btn-sm"><%= link_to "削除", account_path(info), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                    <% end %>
+                </td>
+            </tr>
             <% end %>
-        </ul>
-    </div>
-</body>
+        </tbody>
+    </table>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example').DataTable();
+    });
+</script>

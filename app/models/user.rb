@@ -8,7 +8,6 @@ class User < ApplicationRecord
     has_secure_password
     validates :password, presence: true, length: { minimum: 6}, on: :create
     has_secure_token :api_token
-    attachment :profile_image
 
     validates :name, presence: true, length: { maximum: 50}
     validates :belonging, presence: true, length: {maximum: 15}

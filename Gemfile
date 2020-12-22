@@ -58,10 +58,11 @@ gem "bulma-rails"
 gem 'pry-rails'
 gem 'faker'
 gem 'bootstrap_form'
-gem 'jquery-rails'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem 'actiontext'
 gem 'mini_magick'
 gem 'aws-sdk-s3', require: false
 gem 'rack-cors'
+gem 'kaminari'
+gem 'bootstrap4-kaminari-views'

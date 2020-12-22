@@ -1,7 +1,8 @@
-<div class="position-fixed">
+<div class="container">
     <h1>新規投稿</h1>
 
     <%= render 'form', post: @post %>
 
-    <%= link_to '投稿一覧', posts_path %>
+    <br>
+    <button class="btn  btn-outline-info  btn-sm"><%= link_to '投稿一覧', posts_path %></button>
 </div>

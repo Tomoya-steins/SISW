@@ -18,10 +18,6 @@ class PersonalController < ApplicationController
     end
   end
 
-  def password_edit
-    @personal = User.find(params[:id])
-  end
-
   def password_update
     @personal = User.find(params[:id])
     if cureent_user.name == @personal.name && cureent_user.belonging == @personal.belonging
@@ -38,10 +34,7 @@ class PersonalController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:profile_image, :profile)
+    params.require(:user).permit(:name, :belonging, :email)
   end
 
-  def user_password_params
-    params.require.(:user).permit(:password, :password_confirmation)
-  end
 end

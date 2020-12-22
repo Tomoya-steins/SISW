@@ -12,9 +12,9 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_activation_email
       # UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "入力されたEメールから有効化をお願いします。"
-      redirect_to signup_wait_path
+      redirect_to signup_wait_path, info: "入力されたEメールから有効化をお願いします。"
     else
+    flash.now[:danger] = "失敗しました。"
     render :new
     end
   end
@@ -30,12 +30,13 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_activation_email
       # UserMailer.account_activation(@user).deliver_now
-      flash[:info] = "入力されたEメールから有効化をお願いします。"
-      redirect_to signup_wait_path
+      redirect_to signup_wait_path, info: "入力されたEメールから有効化をお願いします。"
     else
+    flash.now[:danger] = "失敗しました。"
     render :new_firm
     end
   else
+    flash.now[:danger] = "失敗しました。"
     render :new_firm
   end
   end

@@ -19,7 +19,7 @@
 * {
   box-sizing: border-box;
   max-width: 100%;
-  font-family: "Gruppo", cursive;
+  //font-family: "Gruppo", cursive;
 }
 html,
 body {
@@ -33,6 +33,9 @@ body {
 //   z-index: 1;
 //   top: 0;
 // }
+.flash {
+  z-index: 0;
+}
 
 .position-fixed {
   top: 0;
@@ -87,6 +90,9 @@ body {
   display: flex;
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
+  position: fixed;
+  z-index: 5;
+  pointer-events: none;
 }
 .menu-con {
   -webkit-flex-grow: 1;
@@ -98,8 +104,8 @@ body {
   position: relative;
   top: -100%;
   transition: all 0.5s;
-  z-index: 2;
 }
+
 .menu-con a:before {
   content: "";
   display: block;
@@ -125,6 +131,15 @@ body {
   z-index: 4;
   cursor: pointer;
 }
+
+.nav-unshown {
+  display: none;
+}
+
+#nav-input:checked ~ .menu {
+  pointer-events: auto;
+}
+
 @media screen and (max-width: 600px) {
   .menu-con {
     min-width: 50%;

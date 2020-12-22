@@ -1,9 +1,7 @@
- <div class="position-fixed">
-     <%= @user.name %>
-     <%= @user.belonging %>
-     <%= @user.email %>
-     <%= link_to '編集', edit_account_path(@user) %>
-     <% unless @user.id == current_user.id %>
-     <%= link_to '削除', "accounts/#{@user.id}", method: :delete %>
-     <% end %>
- </div>
+<%= @user.name %>
+<%= @user.belonging %>
+<%= @user.email %>
+<%= link_to '編集', edit_account_path(@user) %>
+<% unless @user.id == current_user.id %>
+<%= link_to '削除', "accounts/#{@user.id}", method: :delete %>
+<% end %>

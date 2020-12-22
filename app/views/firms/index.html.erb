@@ -1,14 +1,29 @@
- <div class="position-fixed">
+ <div class="container">
+     <h1>法人登録</h1>
      <%= form_with model: @firm, url: firms_path, local: true, class: "form-signin" do |f| %>
 
      <%= f.label :firm_name, class: "sr-only" %>
      <%= f.text_field :firm_name, required: true, class: "form-control", placeholder: "法人名" %>
 
-     <p><%= f.submit '送信', class: "btn btn-lg btn-primary btn-block" %></p>
+     <p><%= f.submit '登録', class: "btn btn-outline-info btn-block"  %></p>
      <% end %>
 
-     <% @firms.each do |fi|%>
-     <p><%= fi.firm_name %></p>
-     <button><%= link_to '削除', firm_path(fi), method: :delete %></button>
-     <% end %>
+     <div class="border"></div>
+     <table class="table table-borderless">
+         <tbody>
+             <% @firms.each do |fi|%>
+             <tr>
+                 <td>
+                     <%= fi.firm_name %>
+                 </td>
+                 <td>
+                     <button class="btn btn-outline-info btn-sm"><%= link_to '削除', firm_path(fi), method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                 </td>
+             </tr>
+             <% end %>
+         </tbody>
+     </table>
+     <div class="paginate">
+         <%= paginate @firms, theme: 'twitter-bootstrap-4' %>
+     </div>
  </div>

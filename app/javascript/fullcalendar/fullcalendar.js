@@ -14,16 +14,17 @@ document.addEventListener("turbolinks:load", function () {
     plugins: [
       dayGridPlugin,
       interactionPlugin,
-      listPlugin,
+      //listPlugin,
       bootstrapPlugin,
-      timeGridPlugin,
+      //timeGridPlugin,
     ],
     themeSystem: "bootstrap",
-    initialView: "listWeek",
+    //initialView: "listWeek",
     headerToolbar: {
       left: "prev,next today",
       center: "title",
-      right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+      //right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+      right: "dayGridMonth",
     },
 
     buttonText: {
@@ -38,13 +39,23 @@ document.addEventListener("turbolinks:load", function () {
       list: "リスト",
     },
     buttonIcons: {
-      close: "fa-times",
-      prev: "fa-chevron-left",
-      next: "fa-chevron-right",
-      prevYear: "fa-angle-double-left",
-      nextYear: "fa-angle-double-right",
+      // close: "fa-times",
+      // prev: "fa-chevron-left",
+      // next: "fa-chevron-right",
+      // prevYear: "fa-angle-double-left",
+      // nextYear: "fa-angle-double-right",
     },
-
+    views: {
+      dayGridMonth: {
+        titleFormat: { year: "numeric", month: "numeric" },
+      },
+      listMonth: {
+        titleFormat: { year: "numeric", month: "numeric" },
+        listDayFormat: { month: "numeric", day: "numeric", weekday: "narrow" },
+        listDaySideFormat: false,
+      },
+    },
+    locale: "ja",
     navLinks: true,
     editable: true,
     dayMaxEvents: true,

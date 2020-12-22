@@ -9,6 +9,9 @@ require("@rails/activestorage").start();
 require("channels");
 require("bootstrap/dist/js/bootstrap");
 require("fullcalendar/fullcalendar.js");
+require("jquery.bgswitcher/jquery.bgswitcher.js");
+require("jquery");
+require("datatables.net-bs4");
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -24,3 +27,6 @@ require("fullcalendar/fullcalendar.js");
 require("trix");
 require("@rails/actiontext");
 // import "../trix-editor-overrides";
+
+import $ from "jquery";
+global.$ = jQuery;

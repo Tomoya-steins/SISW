@@ -1,46 +1,52 @@
-<section class="hero is-light is-fullheight">
-    <div class="hero-head">
-        <section class="hero is-primary">
-            <div class="hero-body">
-                <div class="container">
-                    <h1 class="title">
-                        <%= @personal.name %>-詳細
-                    </h1>
-                </div>
-            </div>
-        </section>
+<div class="container">
+    <div class="h1">
+        <strong>
+            <%= @personal.name %>-詳細
+        </strong>
+    </div>
+    <div class="edit-positon">
+        <button class="btn  btn-outline-info  btn-sm">
+            <h6>
+                <%= link_to '編集', edit_personal_path(@personal) %>
+            </h6>
+        </button>
+    </div>
+    <div class="border"></div>
 
 
-        <section class="section">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-8">
-                        <div class="columns is-centered">
-                            <div class="column is-4">
-                                <figure class="image is-128x128" style="margin-left: auto; margin-right: auto;">
-                                    <%= attachment_image_tag @personal, :profile_image, fallback: "no-image-people.jpg", class: "profile_image is-rounded" %>
-                                </figure>
-                            </div>
-                            <div class="column is-8">
-                                <table class="table is-fullwidth">
-                                    <tr>
-                                        <td class="is-size-4">
-                                            <strong><%= @personal.name %></strong>
-                                        </td>
-                                        <td class="is-size-4">
-                                            <%= @personal.belonging %>
-                                        </td>
-                                        <td class="is-size-4">
-                                            <%= @personal.profile %>
-                                        </td>
-                                        <td>
-                                            <%= link_to '編集', edit_personal_path(@personal), class: "button is-primary" %>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
+
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">
+                    <div class="h5"><strong>氏名</strong></div>
+                </th>
+                <th scope="col">
+                    <div class="h5"><strong>所属先</strong></div>
+                </th>
+                <th scope="col">
+                    <div class="h5"><strong>メールアドレス</strong></div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="h5">
+                        <%= @personal.name %>
                     </div>
-                </div>
-            </div>
-        </section>
+                </td>
+                <td>
+                    <div class="h5">
+                        <%= @personal.belonging %>
+                    </div>
+                </td>
+                <td>
+                    <div class="h5">
+                        <%= @personal.email %>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

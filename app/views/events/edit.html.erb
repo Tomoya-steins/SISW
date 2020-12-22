@@ -1,5 +1,12 @@
-<h1>Editing Event</h1>
+<h1>編集</h1>
 
 <%= render 'form', event: @event %>
-<%= link_to 'Show', @event %> |
-<%= link_to 'Back', events_path %>
+
+<%
+=begin%>
+<%= link_to 'Show', @event %>
+<%
+=end%>
+<button class="btn  btn-outline-info  btn-sm">
+    <%= link_to 'Back', events_path %>
+</button>
