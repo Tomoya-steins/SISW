@@ -16,6 +16,15 @@ User.create!(
     },
     {
         name: "株式会社クスリのアオキ", belonging: "株式会社クスリのアオキ", email: "aoki@gmail.com", password: "kusurinoaoki", password_confirmation: "kusurinoaoki", admin: false, activated: true, activated_at: Time.now
+    },
+    {
+        name: "CCM", belonging: "CCM", email: "ccm@gmail.com", password: "steinsgate", password_confirmation: "steinsgate", admin: false, activated: true, activated_at: Time.now
+    },
+    {
+        name: "株式会社ほげほげ", belonging: "株式会社ほげほげ", email: "hogehoge@gmail.com", password: "steinsgate", password_confirmation: "steinsgate", admin: false, activated: true, activated_at: Time.now
+    },
+    {
+        name: "SYTE", belonging: "SYTE", email: "syte@gmail.com", password: "steinsgate", password_confirmation: "steinsgate", admin: false, activated: true, activated_at: Time.now
     }
     ]
 )

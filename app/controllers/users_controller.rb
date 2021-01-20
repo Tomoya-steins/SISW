@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def top
+    @posts = Post.all
   end
   
   def new
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
   def create_firm
     @user = User.new(firm_params)
     @user.name = @user.belonging
+    @user.firm_sambnail = 'default_image.jpg'
     if Firm.find_by(firm_name: "#{@user.name}")
     if @user.save
       @user.send_activation_email

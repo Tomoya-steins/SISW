@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(belonging: params[:session][:belonging])
+    user = User.find_by(belonging: params[:session][:belonging], email: params[:session][:email])
         if user&.authenticate(params[:session][:password])
           if user.activated?
             login user

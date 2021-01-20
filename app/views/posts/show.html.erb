@@ -4,15 +4,30 @@
     <p id="notice"><%= notice %></p>
     <%
 =end%>
+    <div class="d-flex align-items-center mb-4">
+        <div class="ml-auto posts_button">
+            <button class="btn btn-outline-info"> <%= link_to '投稿一覧', posts_path %></button>
+            <% if current_user.admin? %>
+            <button class="btn btn-outline-info"> <%= link_to '編集', edit_post_path(@post) %></button>
+            <% end %>
+        </div>
+    </div>
 
-    <p>
-        <strong>Title:</strong>
-        <%= @post.title %>
-    </p>
-    <%= @post.content %>
-
-    <% if current_user.admin? %>
-    <%= link_to '編集', edit_post_path(@post) %> |
-    <% end %>
-    <%= link_to '投稿一覧', posts_path %>
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            <h4>
+                <strong>Title:</strong>
+                <%= @post.title %>
+            </h4>
+        </div>
+        <div class="card-body">
+            <%= @post.content %>
+        </div>
+        <div class="card-footer">
+            <p class="text-left font-weight-light">投稿日: <%= @post.created_at %></p>
+            <%= link_to personal_path(@firm) do %>
+            <p class="text-right font-weight-bold mr-10"><%= @post.firm_name %></p>
+            <% end %>
+        </div>
+    </div>
 </div>

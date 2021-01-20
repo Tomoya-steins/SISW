@@ -1,6 +1,7 @@
 class PersonalController < ApplicationController
   def show
     @personal = User.find(params[:id])
+    @posts = Post.where(firm_name: "#{@personal.belonging}")
   end
 
   def edit
@@ -34,7 +35,7 @@ class PersonalController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:name, :belonging, :email)
+    params.require(:user).permit(:name, :belonging, :email, :firm_sambnail)
   end
 
 end

@@ -26,7 +26,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.3029586834733894) 0%,
+    rgba(0, 0, 0, 0.03405112044817926) 5%,
+    rgba(0, 0, 0, 0.028448879551820738) 95%,
+    rgba(0, 0, 0, 0.3029586834733894) 100%
+  );
 }
 
 // .position-absolute {
@@ -58,7 +65,8 @@ body {
 .menu-bar {
   width: 50px;
   height: 5px;
-  background: rgb(190, 190, 190);
+  //background: rgb(190, 190, 190);
+  background: #000000;
   position: absolute;
   transition: all 0.3s;
 }
@@ -149,4 +157,14 @@ body {
   .menu-con {
     min-width: 100%;
   }
+}
+
+.SIS {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 10px 15px;
+  padding: 0;
+  color: #6495ed;
+  z-index: 5;
 }

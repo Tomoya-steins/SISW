@@ -21,6 +21,8 @@
             <%= f.text_field :email, value: @personal.email, required: true, class: "form-control" %>
             <br>
 
+            <%= f.file_field :firm_sambnail %>
+
             <%= f.submit '変更', class: "btn btn-lg btn-primary btn-block" %>
         </div>
     </div>

@@ -1,15 +1,19 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :admin_user, only: [:new, :edit, :update, :create, :destroy]
+  
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(20)
+    #@firm = User.find_by(belonging: "#{@posts.firm_name}")
+    @firm = User.all
   end
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @firm = User.find_by(belonging: "#{@post.firm_name}")
   end
 
   # GET /posts/new
@@ -25,6 +29,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    if User.find_by(name: "#{@post.firm_name}")
 
     respond_to do |format|
       if @post.save
@@ -35,12 +40,16 @@ class PostsController < ApplicationController
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+    else
+       render :new
+    end
   end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
+      
       if @post.update(post_params)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
@@ -69,10 +78,13 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :content)
+
+      params.require(:post).permit(:title, :content, :firm_name)
     end
 
     def admin_user
       redirect_to(login_path) unless current_user.admin?
-  end
+    end
+
 end
+

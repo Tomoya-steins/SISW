@@ -9,7 +9,7 @@ require("@rails/activestorage").start();
 require("channels");
 require("bootstrap/dist/js/bootstrap");
 require("fullcalendar/fullcalendar.js");
-require("jquery.bgswitcher/jquery.bgswitcher.js");
+//require("jquery.bgswitcher/jquery.bgswitcher.js");
 require("jquery");
 require("datatables.net-bs4");
 

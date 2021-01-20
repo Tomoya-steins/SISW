@@ -1,9 +1,11 @@
 <div class="container">
+    <%= image_tag @personal.firm_sambnail.variant(resize_to_limit: [100, 100] ), class: "rounded-circle" %>
     <div class="h1">
         <strong>
             <%= @personal.name %>-詳細
         </strong>
     </div>
+    <% if current_user.id == @personal.id %>
     <div class="edit-positon">
         <button class="btn  btn-outline-info  btn-sm">
             <h6>
@@ -18,9 +20,11 @@
     <table class="table table-borderless">
         <thead>
             <tr>
+                <% unless @personal.name == @personal.belonging %>
                 <th scope="col">
                     <div class="h5"><strong>氏名</strong></div>
                 </th>
+                <% end %>
                 <th scope="col">
                     <div class="h5"><strong>所属先</strong></div>
                 </th>
@@ -31,11 +35,13 @@
         </thead>
         <tbody>
             <tr>
+                <% unless @personal.name == @personal.belonging %>
                 <td>
                     <div class="h5">
                         <%= @personal.name %>
                     </div>
                 </td>
+                <% end %>
                 <td>
                     <div class="h5">
                         <%= @personal.belonging %>
@@ -49,4 +55,36 @@
             </tr>
         </tbody>
     </table>
+    <% end %>
+
+    <% if @posts.present? %>
+    <h1>投稿一覧</h1>
+    <div class="row">
+        <% @posts.each do |post| %>
+        <div class="col-3">
+            <div class="card">
+                <%= link_to post do %>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%= post.title %>
+                    </h5>
+                    <p>
+                        投稿日: <%= post.created_at %>
+                    </p>
+                </div>
+                <% end %>
+                <div class="card-footer">
+                    <p>
+                        <%= post.firm_name %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
+
+    <% if current_user.id == @personal.id && @posts.blank? %>
+    [気になる企業] 今後実装予定
+    <% end %>
 </div>

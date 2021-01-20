@@ -2,8 +2,8 @@ class User < ApplicationRecord
     attr_accessor :remember_token, :activation_token, :reset_token
     before_save :downcase_email
     before_create :create_activation_digest
-    #  has_many :posts
-    has_many :messages, dependent: :destroy
+    has_one_attached :firm_sambnail
+    #has_many :messages, dependent: :destroy
    
     has_secure_password
     validates :password, presence: true, length: { minimum: 6}, on: :create
