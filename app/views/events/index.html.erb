@@ -3,7 +3,6 @@
 <p id="notice"><%= notice %></p>
 <%
 =end%>
-
 <div class="container">
     <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
@@ -33,6 +32,7 @@
         </table>
 
     </div>
+</div>
 
     <br>
     <% if current_user.admin? %>
@@ -40,9 +40,6 @@
         <%= link_to 'イベントを作成', new_event_path %>
     </button>
     <% end %>
-</div>
 <div class="border"></div>
 
-<div class="container">
-    <div id="calendar"></div>
-</div>
+    <div id="calendar", class="calendar"></>

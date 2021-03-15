@@ -1,8 +1,14 @@
 class AccountsController < ApplicationController
-  before_action :admin_user, only: :destroy
+  before_action :admin_user, only: [:destroy, :index]
   
   def index
     @users_info = User.all
+  end
+
+  def post_firms
+    @post_firm = Post.select(:firm_name).distinct
+    @post_count = Post.select(:firm_name)
+    @firm = User.select(:belonging, :email, :id)
   end
 
   def destroy

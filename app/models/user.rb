@@ -4,6 +4,7 @@ class User < ApplicationRecord
     before_create :create_activation_digest
     has_one_attached :firm_sambnail
     #has_many :messages, dependent: :destroy
+    #has_many :likes
    
     has_secure_password
     validates :password, presence: true, length: { minimum: 6}, on: :create

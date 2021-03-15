@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'likes/create'
   get 'password_resets/new'
   get 'password_resets/edit'
   resources :events
@@ -6,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
   post 'signup' => 'users#create'
+
+  get 'post_firms' => 'accounts#post_firms'
 
   get 'signup_firm' => 'users#new_firm'
   post 'signup_firm' => 'users#create_firm'
@@ -23,7 +26,9 @@ Rails.application.routes.draw do
 
   resources :firms, only: [:index, :create, :destroy]
   
-  resources :posts
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+  end
 
   resources :personal, only: [:show, :edit, :update]
 

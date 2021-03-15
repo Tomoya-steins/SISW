@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_27_011157) do
+ActiveRecord::Schema.define(version: 2021_03_03_070549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,13 @@ ActiveRecord::Schema.define(version: 2020_12_27_011157) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.text "content"
@@ -91,6 +98,8 @@ ActiveRecord::Schema.define(version: 2020_12_27_011157) do
     t.string "firm_name"
     t.string "reset_digest"
     t.datetime "reset_sent_at"
+    t.string "department"
+    t.string "birthplace"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

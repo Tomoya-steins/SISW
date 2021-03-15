@@ -1,42 +1,46 @@
-<body class="text-center">
-    <%= form_with model: @user, url: signup_path, local: true, class: "form-signin" do |f| %>
-    <% if @user.errors.any? %>
-    <ul>
-        <%= @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-    </ul>
-    <% end %>
-
+<body>
+    <div class="page-header text-center">
+        <h1>ユーザー登録画面(学生)</h1>
+    </div>
     <div class="container">
-        <div class="col-md-10">
-            <h1 class="h3 mb-3 font-weight-normal">ユーザー登録画面(学生)</h1>
+        <div class="card card-container">
             <br>
+            <%= image_tag 'school.jpg', class: 'profile-img img-circle' %>
             <br>
+
+            <%= form_with model: @user, url: signup_path, local: true, class: "form-signin mb10" do |f| %>
 
             <%= f.label :name, class: "sr-only" %>
-            <%= f.text_field :name, required: true, class: "form-control", placeholder: "氏名"%>
+            <%= f.text_field :name, required: true, class: "form-control", placeholder: "氏名　例)富山太郎" %>
+            <br>
+
+            <%= f.label :birthplace, class: "sr-only" %>
+            <%= f.select :birthplace, [["富山県", "富山県"], ["愛知県", "愛知県"], ["その他", "その他"]], include_blank:"出身都道府県"%>
             <br>
 
             <%= f.label :belonging, class: "sr-only"  %>
             <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学" %>
             <br>
 
-            <%= f.label :email, class: "sr-only"  %>
-            <%= f.text_field :email, required: true, class: "form-control", placeholder: "メールアドレス" %>
+            <%= f.label :department, class: "sr-only" %>
+            <%= f.select :department, [["工学部電子情報工学科", "工学部電子情報工学科"], ["工学部情報システム工学科", "工学部情報システム工学科"], ["看護学部看護学科", "看護学部看護学科"]], include_blank: "学部・学科"%>
             <br>
+
+            <%= f.label :email, class: "sr-only"  %>
+            <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address"   %>
+            <br>
+
 
             <%= f.label :password, class: "sr-only"  %>
-            <%= f.password_field :password, required: true, class: "form-control", placeholder: "パスワード" %>
+            <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
             <br>
-
 
             <%= f.label :password_confirmation, class: "sr-only"  %>
             <%= f.password_field :password_confirmation, required: true, class: "form-control", placeholder: "パスワード(確認)"  %>
             <br>
 
-            <p><%= f.submit '送信', class: "btn btn-lg btn-primary btn-block" %></p>
+            <%= f.submit '登録する', class: "btn btn-lg btn-primary btn-block" %>
+            <% end %>
         </div>
     </div>
-    <% end %>
 </body>

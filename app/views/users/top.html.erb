@@ -1,6 +1,165 @@
-<div class="container">
-    <%= @posts.each do |post| %>
-    <%= post.title %>
-    <% end %>
+<header class="full">
+    <%
+=begin%>
+ <h1 class="title">Sharing Information System for 就活生</h1> 
+<%
+=end%>
 
-</div>
+    <div class="animate three">
+      <div class="title">
+			<span>S</span><span>h</span><span>a</span><span>r</span><span>i</span><span>n</span><span>g</span> &nbsp;
+			<span>I</span><span>n</span><span>f</span><span>o</span><span>r</span><span>m</span><span>a</span><span>t</span><span>i</span><span>o</span><span>n</span> &nbsp;
+            <span>S</span><span>y</span><span>s</span><span>t</span><span>e</span><span>m</span> &nbsp;
+            <span>f</span><span>o</span><span>r</span> &nbsp;
+            <span>就</span><span>活</span><span>生</span> &nbsp;
+      </div>
+    </div>
+</header>
+<section class="posting">
+    <h1 class="post">Posting</h1>
+    <div class="card-deck row">
+        <% @posts.each do |post| %>
+        <div class="col">
+            <div class="card border-primary mb-3 text-center">
+                <div class="card-header text-white bg-white border-primary">
+                    <% @firm.each do |firm| %>
+                    <% if firm.name == post.firm_name %>
+                    <%= image_tag firm.firm_sambnail.variant(resize_to_limit: [250, 250] )%>
+                    <% end %>
+                    <% end %>
+                </div>
+                <%= link_to login_path do %>
+                <div class="card-body">
+                    <h2 class="card-title">
+                        <%= post.title %>
+                    </h2>
+                    <p>
+                        投稿日: <%= post.created_at %>
+                    </p>
+                </div>
+                <% end %>
+                <div class="card-footer">
+                    <h5>
+                        <%= post.firm_name %>
+                    </h5>
+                </div>
+            </div>
+        </div>
+        <% end %>
+</section>
+
+<%
+=begin%>
+ <%= link_to login_path do %>
+<section class="login">
+    <h1 class="login-title">ログイン</h1>
+    <h4>既にアカウントをお持ちの方はこちらから</h4>
+</section>
+<% end %> 
+<%
+=end%>
+
+<section>
+<%= link_to login_path, class: "button3" do %>
+   <em> </em>   
+    <span>
+      ログイン
+      </span>
+<% end %>
+</section>
+
+<section>
+<%= link_to signup_path, class: "button2" do %>
+   <em> </em>   
+    <span>
+      アカウント登録[学生]
+      </span>
+<% end %>
+</section>
+
+<section>
+<%= link_to signup_firm_path, class: "button1" do %>
+   <em> </em>   
+    <span>
+      アカウント登録[法人]
+      </span>
+<% end %>
+</section>
+
+<%
+=begin%>
+ <%= link_to signup_path do %>
+<section class="signup">
+    <h1 class="signup-title">アカウント登録</h1>
+    <h4>学生の方はこちら</h4>
+</section>
+<% end %> 
+<%
+=end%>
+
+ <%
+=begin%>
+ <%= link_to signup_firm_path do %>
+<section class="signup_firm">
+    <h1 class="signup_firm-title">アカウント登録[法人]</h1>
+    <h4>企業の方はこちら</h4>
+</section>
+<% end %>  
+<%
+=end%>
+
+<footer>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 footer-about">
+          <h1 class="footer-title">SIS for 就活生</h1>
+          <p>このSharingInformationSystem for 就活生[SIS for 就活生]は富山県立大学学生団体CCMが作成しました。
+          これは富山県立大学生と富山県内の企業を繋げることを目的としたアプリケーションです。ぜひご利用くださいませ。</p>
+        </div>
+        <div class="col-md-3 offset-md-3 footer-contact">
+          <h3 class="footer-title" >Contact</h3>
+          <p>富山県射水市黒河5180</p>
+          <p>080-xxxx-xxxx</p>
+          <p>test.hogehoge@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 footer-copyright">
+        　© 2021 CCM
+        </div>
+        <div class="col-md-1 offset-md-9 footer-social">
+          <p>Twitterのマーク</p>
+        </div>
+    </div>
+    </div>
+  </div>
+</footer>
+
+<%
+=begin%>
+ <div class="row">
+    <div class="col">
+        <%= link_to signup_path do %>
+        <section class="signup">
+            <h1 class="signup-title">アカウント登録</h1>
+            <h5>学生の方はこちら</h5>
+        </section>
+        <% end %>
+    </div>
+    <div class="col">
+        <%= link_to signup_firm_path do %>
+        <section class="signup_firm">
+            <h1 class="signup_firm-title">アカウント登録[法人]</h1>
+            <h5>企業の方はこちら</h5>
+        </section>
+        <% end %>
+    </div>
+</div> 
+<%
+=end%>
+

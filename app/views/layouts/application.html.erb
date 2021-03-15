@@ -10,11 +10,13 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/core/main.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
+    <script src= "http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <% unless current_page?(root_path)  %>
 
+    <%
+=begin%>
     <div class="flash">
         <% flash.each do |name, msg| %>
         <div class="alert alert-<%= name %>">
@@ -22,6 +24,8 @@
         </div>
         <% end %>
     </div>
+    <%
+=end%>
 
     <input id="nav-input" type="checkbox" class="nav-unshown">
     <label class="menu-icon" for="nav-input" onclick="this.classList.toggle('hover');Drop(0)">
@@ -31,11 +35,7 @@
     </label>
     <div class="menu">
         <% if current_user != nil %>
-        <div class="menu-con" style="background:rgb(255, 194, 204);">
-            <a>
-                <%= link_to  "カレンダー", events_path  %>
-            </a>
-        </div>
+
         <div class="menu-con" style="background:rgb(255, 198, 92);">
             <a>
                 <%= link_to '投稿', posts_path %>
@@ -48,6 +48,13 @@
             </a>
         </div>
         <% else %>
+
+        <div class="menu-con" style="background:rgb(0, 224, 224);">
+            <a>
+                <%= link_to "投稿企業一覧", post_firms_path %>
+            </a>
+        </div>
+
         <div class="menu-con" style="background:rgb(0, 224, 150);">
             <a>
                 <%= link_to "#{current_user.name}詳細", personal_path(current_user) %>
@@ -83,9 +90,6 @@
             </a>
         </div>
         <% end %>
-    </div>
-    <div class="SIS">
-        <h4>SIS for 就活生</h4>
     </div>
 
 
@@ -141,7 +145,6 @@
                 }
             }
         </script>
-        <% end %>
     </body>
     <%= yield %>
 

@@ -2,6 +2,47 @@ class PersonalController < ApplicationController
   def show
     @personal = User.find(params[:id])
     @posts = Post.where(firm_name: "#{@personal.belonging}")
+
+    like_firm = Like.where(user_id: params[:id])
+    like_firm_up = like_firm.order(post_id: "ASC")
+    #@firm = Post.where(id: like_firm.post_id)
+    unless like_firm_up.blank?
+      array_firm = []
+      array_firm_name =[]
+
+      like_firm_up.each do |a|
+        array_firm.push(a.post_id)
+      end
+      firms = Post.where(id: array_firm)
+      #3月10日突破　ここはまじで難しかった
+      #firms = Post.where(id: like_firm_up.first.post_id..like_firm_up.last.post_id)
+      @firm = firms.select(:firm_name).distinct
+      
+      # firm.each do |f|
+      #   array_firm_name.push(f.firm_name)
+      # end
+      # @firm = User.where(belonging: "#{array_firm_name}")
+
+    end
+    #@firms = Post.all.order(created_at: :desc).limit(3)
+    #@firm = firms.distinct.pluck(:firm_name, :title)
+    #@firm = Post.where(firm_name: "#{firms2}")
+    #my = @posts.order(id: "ASC")
+
+      my_array_firm = []
+      like_array = []
+
+      @posts.each do |post|
+        my_array_firm.push(post.id)
+      end
+      my_post = Like.where(post_id: my_array_firm)
+      my_like = my_post.select(:user_id).distinct
+
+      my_like.each do |like|
+        like_array.push(like.user_id)
+      end
+      @like_user = User.where(id: like_array)
+
   end
 
   def edit

@@ -1,3 +1,4 @@
+<section class="new-event-form">
     <div class="container">
         <%= form_with(model: event, local: true, class: "text-center border border-light p-5" ) do |form| %>
         <% if event.errors.any? %>
@@ -31,3 +32,4 @@
 
         <% end %>
     </div>
+</section>

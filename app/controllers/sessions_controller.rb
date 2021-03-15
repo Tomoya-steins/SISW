@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
           if user.activated?
             login user
             params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-            redirect_to events_path, success: 'ログインしました!'
+            redirect_to posts_path, success: 'ログインしました!'
           else
             message = "有効化に失敗しました"
             flash[:warning] = message

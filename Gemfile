@@ -66,3 +66,5 @@ gem 'aws-sdk-s3', require: false
 gem 'rack-cors'
 gem 'kaminari'
 gem 'bootstrap4-kaminari-views'
+gem 'jquery-rails'
+gem 'chartkick'

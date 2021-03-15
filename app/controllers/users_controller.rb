@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
   def top
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc).limit(3)
+    @firm = User.all
   end
   
   def new
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :belonging, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :belonging, :email, :password, :password_confirmation, :department, :birthplace)
   end
 
   def firm_params

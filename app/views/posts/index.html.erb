@@ -1,44 +1,49 @@
-<div class="container">
-    <h1>投稿一覧</h1>
-    <div class="newPost">
-        <% if current_user.admin? %>
-        <button class="btn btn-outline-info btn-sm"><%= link_to '新規作成', new_post_path %></button>
-        <% end %>
-    </div>
-    <div class="row">
-        <% @posts.each do |post| %>
-        <div class="col-3">
-            <div class="card">
-                <div class="card-header">
-                    <% @firm.each do |firm| %>
-                    <% if firm.name == post.firm_name %>
-                    <%= image_tag firm.firm_sambnail.variant(resize_to_limit: [400, 400] )%>
-                    <% end %>
-                    <% end %>
-                </div>
-                <%= link_to post do %>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <%= post.title %>
-                    </h5>
-                    <p>
-                        投稿日: <%= post.created_at %>
-                    </p>
+<section>
+        <h1 class="h1-title">投稿一覧</h1>
+        <div class="newPost">
+            <% if current_user.admin? %>
+            <div class="btn-new">
+              <button class="btn btn-outline-info btn-lg"><%= link_to '新規作成', new_post_path %></button>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="posts">
+            <div class="card-deck row">
+                <% @posts.each do |post| %>
+                <div class="col-4">
+                    <div class="card border-primary mb-3 text-center">
+                        <div class="card-header text-white bg-white border-primary">
+                            <% @firm.each do |firm| %>
+                            <% if firm.name == post.firm_name %>
+                            <%= image_tag firm.firm_sambnail.variant(resize_to_limit: [200, 200] )%>
+                            <% end %>
+                            <% end %>
+                        </div>
+                        <%= link_to post do %>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= post.title %>
+                            </h5>
+                            <p>
+                                投稿日: <%= post.created_at %>
+                            </p>
+                        </div>
+                        <% end %>
+                        <div class="card-footer">
+                            <p>
+                                <%= post.firm_name %>
+                            </p>
+                            <% if current_user.admin? %>
+                            <button class="btn btn-outline-info btn-block "><%= link_to '消去する', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+                            <% end %>
+                        </div>
+                    </div>
                 </div>
                 <% end %>
-                <div class="card-footer">
-                    <p>
-                        <%= post.firm_name %>
-                    </p>
-                    <% if current_user.admin? %>
-                    <button class="btn btn-outline-info btn-block "><%= link_to '消去する', post, method: :delete, data: { confirm: 'Are you sure?' } %></button>
-                    <% end %>
-                </div>
+            </div>
+            <div class="paginate">
+                <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
             </div>
         </div>
-        <% end %>
-    </div>
-    <div class="paginate">
-        <%= paginate @posts, theme: 'twitter-bootstrap-4' %>
-    </div>
-</div>
+</section>

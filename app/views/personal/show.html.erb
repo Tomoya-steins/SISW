@@ -84,7 +84,32 @@
     </div>
     <% end %>
 
-    <% if current_user.id == @personal.id && @posts.blank? %>
-    [気になる企業] 今後実装予定
+    <% if current_user.id == @personal.id && @posts.blank? && @firm.present? %>
+    <h3>いいねした企業</h3>
+        <% @firm.each do |firm| %>
+
+            <%= firm.firm_name %>
+        <% end %>  
+    <% end %>
+
+    <br>
+    <br>
+    <% if @posts.present? && @like_user.present? %>
+
+        <%
+=begin%>
+ <p id="notice"><%= notice %></p> 
+<%
+=end%>  
+        <div class="row">
+            <div class="col">
+                <h3>所属学部・学科</h3>
+                <%= pie_chart @like_user.group(:department).count %>
+            </div>
+            <div class="col">
+                <h3>出身地</h3>
+                <%= pie_chart @like_user.group(:birthplace).count %>
+            </div>
+        </div>
     <% end %>
 </div>

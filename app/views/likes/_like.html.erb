@@ -1,0 +1,13 @@
+<% unless @post.like_user(current_user.id).blank? %>
+<%= link_to post_like_path(post_id: @post.id, id: @post.likes[0].id), method: :delete, remote: true do %>
+<div class="vertical_like">
+    <i class="fas fa-hand-holding-heart fa-2x icon" ></i>
+</div>
+<% end %>
+<% else %>
+<%= link_to post_likes_path(@post.id), method: :post, remote: true do %>
+<div class="vertical_like">
+     <i class="fas fa-hand-holding fa-2x icon" ></i>
+</div>
+<% end %>
+<% end %>

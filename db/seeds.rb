@@ -12,7 +12,7 @@ User.create!(
         name: "管理者", belonging: "富山県立大学", email: "steins_sis@yahoo.co.jp", password: "steinsgate", password_confirmation: "steinsgate", admin: true, activated: true, activated_at: Time.now
     },
     {
-        name: "生徒", belonging: "富山大学", email: "test@gmail.com", password: "password", password_confirmation: "password", admin: false, activated: true, activated_at: Time.now
+        name: "生徒", belonging: "富山大学", email: "test@gmail.com", password: "password", password_confirmation: "password", admin: false, activated: true, activated_at: Time.now, department: "工学部情報システム工学科", birthplace: "富山県"
     },
     {
         name: "株式会社クスリのアオキ", belonging: "株式会社クスリのアオキ", email: "aoki@gmail.com", password: "kusurinoaoki", password_confirmation: "kusurinoaoki", admin: false, activated: true, activated_at: Time.now
