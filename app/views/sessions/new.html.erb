@@ -7,33 +7,35 @@
             <br>
             <%= image_tag '4.png', class: 'profile-img img-circle' %>
             <br>
-
+            
             <%= form_with scope: :session, url: login_path, local: true, class: "form-signin mb10" do |f| %>
 
-            <%= f.label :belonging, class: "sr-only" %>
-            <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学,法人" %>
-            <br>
-
-            <%= f.label :email, class: "sr-only"  %>
-            <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address"   %>
-            <br>
+                <%= f.label :belonging, class: "sr-only" %>
+                <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学,法人" %>
+                <br>
 
 
-            <%= f.label :password, class: "sr-only"  %>
-            <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
-            <br>
+                <%= f.label :email, class: "sr-only"  %>
+                <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address"   %>
+                <br>
 
-            <div class="checkbox">
-                <%= f.label :remember_me, class:"checkbox" do %>
-                <%= f.check_box :remember_me %>
-                <span>保持する</span>
+
+                <%= f.label :password, class: "sr-only"  %>
+                <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
+                <br>
+
+                <div class="checkbox">
+                    <%= f.label :remember_me, class:"checkbox" do %>
+                    <%= f.check_box :remember_me %>
+                    <span>保持する</span>
+                    <% end %>
+                </div>
+
+                <%= link_to "パスワードをお忘れ,または変更する方はこちら", new_password_reset_path %>
+
+                <%= f.submit 'ログインする', class: "btn btn-lg btn-primary btn-block" %>
                 <% end %>
-            </div>
-
-            <%= link_to "パスワードをお忘れ,または変更する方はこちら", new_password_reset_path %>
-
-            <%= f.submit 'ログインする', class: "btn btn-lg btn-primary btn-block" %>
-            <% end %>
+            
         </div>
     </div>
 </body>
