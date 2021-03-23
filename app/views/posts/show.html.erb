@@ -1,17 +1,18 @@
-<div class="container">
+<div class="container-fluid">
     <%
 =begin%>
     <p id="notice"><%= notice %></p>
     <%
 =end%>
     <div class="d-flex align-items-center mb-4">
-        <div class="ml-auto posts_button">
+        <div class="mr-auto posts_button">
             <button class="btn btn-outline-info"> <%= link_to '投稿一覧', posts_path %></button>
             <% if current_user.admin? %>
             <button class="btn btn-outline-info"> <%= link_to '編集', edit_post_path(@post) %></button>
             <% end %>
         </div>
     </div>
+    <br>
 
     <div class="card">
         <div class="card-header bg-info text-white">
