@@ -1,7 +1,8 @@
 class PersonalController < ApplicationController
   def show
     @personal = User.find(params[:id])
-    @posts = Post.where(firm_name: "#{@personal.belonging}")
+    @posts = Post.where(firm_name: "#{@personal.belonging}").limit(4)
+    @posts_count = Post.where(firm_name: "#{@personal.belonging}").count
 
     like_firm = Like.where(user_id: params[:id])
     like_firm_up = like_firm.order(post_id: "ASC")

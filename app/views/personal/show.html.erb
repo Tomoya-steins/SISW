@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col">
-            <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [100, 100] ), class: "rounded-circle" %>
+            <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [120, 120] ), class: "rounded-circle" %>
         </div>
         <div class="col">
             <div class="h1">
                 <strong>
-                    <%= @personal.name %>-詳細
+                    <%= @personal.name %>
                 </strong>
             </div>
         </div>
@@ -19,69 +19,50 @@
             </button>
         </div>
     </div>
-    <div class="border"></div>
 
 
-
-    <table class="table table-borderless">
-        <thead>
-            <tr>
-                <% unless @personal.name == @personal.belonging %>
-                <th scope="col">
-                    <div class="h5"><strong>氏名</strong></div>
-                </th>
-                <% end %>
-                <th scope="col">
-                    <div class="h5"><strong>所属先</strong></div>
-                </th>
-                <th scope="col">
-                    <div class="h5"><strong>メールアドレス</strong></div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <% unless @personal.name == @personal.belonging %>
-                <td>
-                    <div class="h5">
-                        <%= @personal.name %>
-                    </div>
-                </td>
-                <% end %>
-                <td>
-                    <div class="h5">
-                        <%= @personal.belonging %>
-                    </div>
-                </td>
-                <td>
-                    <div class="h5">
-                        <%= @personal.email %>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
+    <br>
+    <table class="tbl" width="100%">
+        <% unless @personal.name == @personal.belonging %>
+        <tr>
+            <th>氏名</th>
+            <td><%= @personal.name %></td>
+        </tr>
+        <% end %>
+         <tr>
+            <th>所属</th>
+            <td><%= @personal.belonging %></td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td><%= @personal.email %></td>
+        </tr>
+         <tr class="last">
+            <th>投稿数</th>
+            <td><%= @posts_count %></td>
+        </tr>
     </table>
     <% end %>
 
+    <br>
     <% if @posts.present? %>
-    <h1>投稿一覧</h1>
+    <h1>投稿一覧(最新の投稿4件を表示)</h1>
+
+    <br>
     <div class="row">
         <% @posts.each do |post| %>
         <div class="col-3">
-            <div class="card">
+            <div class="card text-center">
                 <%= link_to post do %>
                 <div class="card-body">
                     <h5 class="card-title">
                         <%= post.title %>
                     </h5>
-                    <p>
-                        投稿日: <%= post.created_at %>
-                    </p>
                 </div>
                 <% end %>
                 <div class="card-footer">
                     <p>
-                        <%= post.firm_name %>
+                        投稿日: <%= post.created_at %>
                     </p>
                 </div>
             </div>
@@ -90,13 +71,18 @@
     </div>
     <% end %>
 
-    <% if current_user.id == @personal.id && @posts.blank? && @firm.present? %>
-    <h3>いいねした企業</h3>
+いいねした企業を暫定的に非表示(2021/03/30)
+    <%
+=begin%>
+ <% if current_user.id == @personal.id && @posts.blank? && @firm.present? %>
+    <h1>いいねした企業</h1>
         <% @firm.each do |firm| %>
 
             <%= firm.firm_name %>
         <% end %>  
-    <% end %>
+    <% end %> 
+<%
+=end%>
 
     <br>
     <br>

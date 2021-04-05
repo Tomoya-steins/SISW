@@ -1,44 +1,93 @@
-<body>
-    <div class="page-header text-center">
-        <h1>ログイン画面</h1>
-    </div>
-    <div class="container">
-        <div class="card card-container">
-            <br>
-            <%= image_tag '4.png', class: 'profile-img img-circle' %>
-            <br>
-            
-            <%= form_with scope: :session, url: login_path, local: true, class: "form-signin mb10" do |f| %>
 
-                <%= f.label :belonging, class: "sr-only" %>
-                <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学,法人" %>
-                <br>
+<div class="page-header text-center">
+    <h1>Login</h1>
+</div>
 
-
-                <%= f.label :email, class: "sr-only"  %>
-                <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address"   %>
-                <br>
-
-
-                <%= f.label :password, class: "sr-only"  %>
-                <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
-                <br>
-
-                <div class="checkbox">
-                    <%= f.label :remember_me, class:"checkbox" do %>
-                    <%= f.check_box :remember_me %>
-                    <span>保持する</span>
-                    <% end %>
+<div class="row">
+    <div class="col">
+        <section>
+            <div class="container">
+                <div class="image">
+                    <%= image_tag 'wave4.jpg'%>
                 </div>
+            </div>
+        </section>
+    </div>
 
-                <%= link_to "パスワードをお忘れ,または変更する方はこちら", new_password_reset_path %>
+    <div class="col">
+        <section>
+            <div class="container">
+                <div class="card card-container card-position">
+                    <div class="card-body">
+                        <%= form_with scope: :session, url: login_path, local: true, class: "form-signin mb10" do |f| %>
 
-                <%= f.submit 'ログインする', class: "btn btn-lg btn-primary btn-block" %>
-                <% end %>
-            
+                            <%= f.label :belonging, class: "sr-only" %>
+                            <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学,法人" %>
+                            <br>
+
+
+                            <%= f.label :email, class: "sr-only"  %>
+                            <%= f.text_field :email, required: true, class: "form-control", placeholder: "Email address"   %>
+                            <br>
+
+
+                            <%= f.label :password, class: "sr-only"  %>
+                            <%= f.password_field :password, required: true, class: "form-control", placeholder: "Password" %>
+                            <br>
+
+                            <div class="checkbox">
+                                <%= f.label :remember_me, class:"checkbox" do %>
+                                <%= f.check_box :remember_me %>
+                                <span>保持する</span>
+                                <% end %>
+                            </div>
+
+                            <%= link_to "パスワードをお忘れ,または変更する方はこちら", new_password_reset_path %>
+
+                            <%= f.submit 'ログインする', class: "btn btn-lg btn-primary btn-block" %>
+                            <% end %>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<footer>
+  <div class="footer-top">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 footer-about">
+          <h3 class="footer-title">Connect you</h3>
+          <p>「Connect you」は富山県立大学学生団体CCMが作成しました。
+          これは富山県立大学生と富山県内の企業を繋げることで、学生の県内定着を目的としたアプリケーションです。
+          ぜひご利用くださいませ。</p>
+        </div>
+        <div class="col-md-3 offset-md-3 footer-contact">
+          <h4 class="footer-title" >Contact</h4>
+          <p>富山県射水市黒河5180</p>
+          <p>080-xxxx-xxxx</p>
+          <p>test.hogehoge@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2 footer-copyright">
+        　© 2021 CCM
+        </div>
+        <div class="col-md-1 offset-md-9 footer-social">
+          <p>Twitterのマーク</p>
         </div>
     </div>
-</body>
+    </div>
+  </div>
+</footer>
+
+
+
 
 
 

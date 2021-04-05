@@ -12,3 +12,29 @@
   left: 850px;
   top: -40px;
 }
+
+.tbl th {
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+.tbl td {
+  border: solid 1px #ccc;
+  padding: 10px;
+}
+
+@media screen and (max-width: 640px) {
+  .last td:last-child {
+    border-bottom: solid 1px #ccc;
+    width: 100%;
+  }
+  .tbl {
+    width: 80%;
+  }
+  .tbl th,
+  .tbl td {
+    border-bottom: none;
+    display: block;
+    width: 100%;
+  }
+}

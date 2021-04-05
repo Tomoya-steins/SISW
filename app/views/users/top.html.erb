@@ -21,7 +21,7 @@
                 <div class="card-header text-white bg-white border-primary">
                     <% @firm.each do |firm| %>
                     <% if firm.name == post.firm_name %>
-                    <%= image_tag firm.firm_sambnail.variant(resize_to_limit: [250, 250] )%>
+                    <%= image_tag firm.firm_sambnail.variant(resize_to_fill: [400, 350] ).processed%>
                     <% end %>
                     <% end %>
                 </div>
@@ -114,8 +114,8 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 footer-about">
-          <h1 class="footer-title">SIS for 就活生</h1>
-          <p>このSharingInformationSystem for 就活生[SIS for 就活生]は富山県立大学学生団体CCMが作成しました。
+          <h1 class="footer-title">Connect you</h1>
+          <p>「Connect you」は富山県立大学学生団体CCMが作成しました。
           これは富山県立大学生と富山県内の企業を繋げることを目的としたアプリケーションです。ぜひご利用くださいませ。</p>
         </div>
         <div class="col-md-3 offset-md-3 footer-contact">
