@@ -41,6 +41,8 @@
             <%= f.password_field :password_confirmation, required: true, class: "form-control", placeholder: "パスワード(確認)"  %>
             <br>
 
+            <%= f.hidden_field :firm_sambnail, :value => 'default_image.jpg' %>
+
             <%= f.submit '登録する', class: "btn btn-lg btn-primary btn-block" %>
             <% end %>
         </div>

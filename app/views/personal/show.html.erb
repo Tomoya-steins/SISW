@@ -39,10 +39,12 @@
             <th>メールアドレス</th>
             <td><%= @personal.email %></td>
         </tr>
+        <% if @personal.name == @personal.belonging %>
          <tr class="last">
             <th>投稿数</th>
             <td><%= @posts_count %></td>
         </tr>
+        <% end %>
     </table>
     <% end %>
 
