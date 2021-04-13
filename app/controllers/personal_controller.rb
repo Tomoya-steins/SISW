@@ -36,7 +36,10 @@ class PersonalController < ApplicationController
       @posts.each do |post|
         my_array_firm.push(post.id)
       end
+
       my_post = Like.where(post_id: my_array_firm)
+
+      #統計
       my_like = my_post.select(:user_id).distinct
 
       my_like.each do |like|

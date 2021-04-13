@@ -1,12 +1,12 @@
 <body>
     <div class="page-header text-center">
-        <h1>ユーザー登録画面(学生)</h1>
+        <h1>Signup for Student</h1>
     </div>
+    <br>
+    <br>
+
     <div class="container">
         <div class="card card-container">
-            <br>
-            <%= image_tag 'school.jpg', class: 'profile-img img-circle' %>
-            <br>
 
             <%= form_with model: @user, url: signup_path, local: true, class: "form-signin mb10" do |f| %>
 
@@ -17,6 +17,7 @@
             <%= f.label :birthplace, class: "sr-only" %>
             <%= f.select :birthplace, [["富山県", "富山県"], ["愛知県", "愛知県"], ["その他", "その他"]], include_blank:"出身都道府県"%>
             <br>
+            <br>
 
             <%= f.label :belonging, class: "sr-only"  %>
             <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学" %>
@@ -24,6 +25,7 @@
 
             <%= f.label :department, class: "sr-only" %>
             <%= f.select :department, [["工学部電子情報工学科", "工学部電子情報工学科"], ["工学部情報システム工学科", "工学部情報システム工学科"], ["看護学部看護学科", "看護学部看護学科"]], include_blank: "学部・学科"%>
+            <br>
             <br>
 
             <%= f.label :email, class: "sr-only"  %>

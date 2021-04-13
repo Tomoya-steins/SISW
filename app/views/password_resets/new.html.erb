@@ -1,9 +1,20 @@
-<body class="text-center">
-    <div class="position-fixed">
-        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
-        <%= flash[:alert] %>
+<body>
+    <div class="page-header text-center">
+        <div class="h1">
+            <strong>Password Reset</strong>
+        </div>
+    </div>
+    <br>
+    <br>
 
-        <h1 class="h3 mb-3 font-weight-normal">メールアドレスを入力してパスワード変更</h1>
+    <div class="container">
+        <div class="text-center">
+            <h4>メールアドレスを入力してください</h4>
+            <h4>入力先にパスワードリセット有効化のためのメールを送ります</h4>
+        </div>
+        <br>
+        
+        <%= form_for(:password_reset, url: password_resets_path) do |f| %>
 
         <%= f.label :email, class: "sr-only"  %>
         <%= f.email_field :email, required: true, class: "form-control", placeholder: "Email address"   %>

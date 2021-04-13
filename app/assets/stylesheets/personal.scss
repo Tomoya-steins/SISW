@@ -2,6 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
+.inline-block {
+  display: inline-block;
+}
+
+.name {
+  font-size: 8ex;
+  position: relative;
+  top: 20px;
+}
+
+.btn-position {
+  position: relative;
+  left: 30px;
+}
+
 .border {
   position: relative;
   right: 100px;
@@ -23,6 +38,11 @@
   padding: 10px;
 }
 
+.statistic {
+  position: relative;
+  left: 30px;
+}
+
 @media screen and (max-width: 640px) {
   .last td:last-child {
     border-bottom: solid 1px #ccc;
@@ -36,5 +56,14 @@
     border-bottom: none;
     display: block;
     width: 100%;
+  }
+  .name {
+    font-size: large;
+  }
+  .inline-block {
+    display: inline;
+  }
+  .btn-position {
+    top: 20px;
   }
 }

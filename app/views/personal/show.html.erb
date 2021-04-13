@@ -1,22 +1,24 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col">
+    <div class="container">
+        <div class="inline-block">
             <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [120, 120] ), class: "rounded-circle" %>
         </div>
-        <div class="col">
-            <div class="h1">
+        <div class="inline-block">
+            <div class="name">
                 <strong>
                     <%= @personal.name %>
                 </strong>
             </div>
         </div>
+        <div class="inline-block">
         <% if current_user.id == @personal.id %>
-        <div class="col">
-            <button class="btn  btn-outline-info  btn-sm">
-                <h6>
-                    <%= link_to '編集', edit_personal_path(@personal) %>
-                </h6>
-            </button>
+            <div class="btn-position">
+                <button class="btn  btn-outline-info  btn-lg">
+                    <h6>
+                        <%= link_to '編集する', edit_personal_path(@personal) %>
+                    </h6>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -51,7 +53,7 @@
     <br>
     <div class="row">
         <% @posts.each do |post| %>
-        <div class="col-3">
+        <div class="col-md-3">
             <div class="card text-center">
                 <%= link_to post do %>
                 <div class="card-body">
@@ -71,7 +73,9 @@
     </div>
     <% end %>
 
-いいねした企業を暫定的に非表示(2021/03/30)
+    <% unless @personal.name == @personal.belonging %>
+    いいねした企業を暫定的に非表示(2021/03/30)
+    <% end %>
     <%
 =begin%>
  <% if current_user.id == @personal.id && @posts.blank? && @firm.present? %>
@@ -87,6 +91,8 @@
     <br>
     <br>
     <% if @posts.present? && @like_user.present? %>
+    <h1>統計</h1>
+    <br>
 
         <%
 =begin%>
@@ -95,11 +101,11 @@
 =end%>  
         <div class="row">
             <div class="col">
-                <h3>所属学部・学科</h3>
+                <h3 class="statistic">学部・学科</h3>
                 <%= pie_chart @like_user.group(:department).count %>
             </div>
             <div class="col">
-                <h3>出身地</h3>
+                <h3 class="statistic">出身地</h3>
                 <%= pie_chart @like_user.group(:birthplace).count %>
             </div>
         </div>
