@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
+    @icon = "default_image.jpg"
   end
 
   def create
