@@ -1,7 +1,13 @@
 <div class="container-fluid">
     <div class="container">
         <div class="inline-block">
-            <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [120, 120] ), class: "rounded-circle" %>
+            <% if @personal.firm_sambnail.attached? %>
+                <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [120, 120] ), class: "rounded-circle" %>
+            <% else %>
+                <div class="temporary">
+                    <%= image_tag @temporary_image, class: "rounded-circle" %>
+                </div>
+            <% end %>
         </div>
         <div class="inline-block">
             <div class="name">

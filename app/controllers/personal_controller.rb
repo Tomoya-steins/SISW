@@ -1,5 +1,6 @@
 class PersonalController < ApplicationController
   def show
+    @temporary_image = "no-image-people.jpg"
     @personal = User.find(params[:id])
     @posts = Post.where(firm_name: "#{@personal.belonging}").limit(4)
     @posts_count = Post.where(firm_name: "#{@personal.belonging}").count

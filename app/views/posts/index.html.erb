@@ -16,10 +16,14 @@
                 <div class="col-md-4">
                     <div class="card border-dark mb-3 text-center">
                         <div class="card-header text-white bg-white border-muted">
-                            <% @firm.each do |firm| %>
-                            <% if firm.name == post.firm_name %>
-                            <%= image_tag firm.firm_sambnail.variant(resize_to_fill: [400, 350] ).processed %>
-                            <% end %>
+                            <% if post.content.embeds.present? %>
+                                <%= image_tag post.content.embeds.first.blob.variant(resize_to_fill: [400, 350]).processed %>
+                            <% else %>
+                                <% @firm.each do |firm| %>
+                                    <% if firm.name == post.firm_name %>
+                                        <%= image_tag firm.firm_sambnail.variant(resize_to_fill: [400, 350] ).processed %>
+                                    <% end %>
+                                <% end %>
                             <% end %>
                         </div>
                         <%= link_to post do %>

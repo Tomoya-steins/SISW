@@ -43,6 +43,12 @@
   left: 30px;
 }
 
+.temporary {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
 @media screen and (max-width: 640px) {
   .last td:last-child {
     border-bottom: solid 1px #ccc;

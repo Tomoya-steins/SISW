@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   
   def new
     @user = User.new
-    @icon = "default_image.jpg"
   end
 
   def create
@@ -29,7 +28,6 @@ class UsersController < ApplicationController
   def create_firm
     @user = User.new(firm_params)
     @user.name = @user.belonging
-    @user.firm_sambnail = 'default_image.jpg'
     if Firm.find_by(firm_name: "#{@user.name}")
     if @user.save
       @user.send_activation_email
@@ -52,7 +50,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :belonging, :email, :password, :password_confirmation, :department, :birthplace, :firm_sambnail)
+    params.require(:user).permit(:name, :belonging, :email, :password, :password_confirmation, :department, :birthplace)
   end
 
   def firm_params
