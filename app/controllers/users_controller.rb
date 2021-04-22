@@ -28,19 +28,19 @@ class UsersController < ApplicationController
   def create_firm
     @user = User.new(firm_params)
     @user.name = @user.belonging
-    if Firm.find_by(firm_name: "#{@user.name}")
-    if @user.save
-      @user.send_activation_email
-      # UserMailer.account_activation(@user).deliver_now
-      redirect_to signup_wait_path, info: "入力されたEメールから有効化をお願いします。"
+    if Firm.find_by(firm_name: "#{@user.belonging}")
+      if @user.save
+        @user.send_activation_email
+        # UserMailer.account_activation(@user).deliver_now
+        redirect_to signup_wait_path, info: "入力されたEメールから有効化をお願いします。"
+      else
+      flash.now[:danger] = "失敗しました。"
+      render :new_firm
+      end
     else
-    flash.now[:danger] = "失敗しました。"
-    render :new_firm
+      flash.now[:danger] = "失敗しました。"
+      render :new_firm
     end
-  else
-    flash.now[:danger] = "失敗しました。"
-    render :new_firm
-  end
   end
 
   def wait
