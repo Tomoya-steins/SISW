@@ -1,36 +1,27 @@
-<div class="container-fluid">
-    <h1 class="h1-title text-center">投稿企業一覧</h1>
+<body class="back">
+    <div class="container-fluid">
+        <h1 class="h1-title text-center">投稿企業一覧</h1>
 
-     <div class="border"></div>
-     <br>
-</div>
-<div class="container">
-    <table id="example" class="table table-striped table-bordered">
-        <thead>
-            <tr>
-                <th scope="col">所属</th>
-                <th scope="col">メールアドレス</th>
-            </tr>
-        </thead>
-        <tbody>
+        <div class="border border-dark "></div>
+        <br>
+    </div>
+    <div class="container-fluid">
+        <ul class="contents" style="list-style: none;">
             <% @firm.each do |info| %>
             <% @post_firm.each do |post| %>
             <% if info.belonging == post.firm_name%>
-            <tr>
-                <td><%= link_to info.belonging, personal_path(info) %></td>
-                <td><%= info.email %></td>
-            </tr>
+                <li>
+                    <%= link_to info.belonging, personal_path(info), class: "color" %>
+                    <span class="margin">
+                        //
+                    </span>
+                    <%= info.email %>
+                </li>
+                <br>
+            
             <% end %>
             <% end %>
             <% end %>
-        </tbody>
-    </table>
-</div>
-
-
-
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#example').DataTable();
-    });
-</script>
+        </ul>
+    </div>
+</body>

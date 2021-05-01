@@ -1,47 +1,48 @@
-<div class="container-fluid">
-    <%
-=begin%>
-    <p id="notice"><%= notice %></p>
-    <%
-=end%>
-    <div class="d-flex align-items-center mb-4">
-        <div class="mr-auto posts_button">
-            <button class="btn btn-outline-info"> <%= link_to '投稿一覧', posts_path %></button>
-            <% if current_user.admin? %>
-            <button class="btn btn-outline-info"> <%= link_to '編集', edit_post_path(@post) %></button>
-            <% end %>
-        </div>
-    </div>
-    <br>
-
-    <div class="card">
-        <div class="card-header bg-info text-white">
-            <div class="row">
-                <div class="col">
-                <h4>
-                    <strong>Title:</strong>
-                    <%= @post.title %>
-                </h4>
-                </div>
-                <% unless current_user.belonging == current_user.name %>
-                <div class="col">
-                    <div class="float-right">
-                        <div id="likes_buttons<%= @post.id %>">
-                            <%= render partial: 'likes/like', locals: { post: @post, like: @like } %>
-                        </div>
-                    </div>
-                </div>
+<body class="back">
+    <div class="container-fluid">
+        <div class="d-flex align-items-center mb-4">
+            <div class="mr-auto posts_button">
+                <% if current_user.admin? %>
+                    <%= link_to edit_post_path(@post) do %>
+                        <button class="btn btn-outline-info"> 編集</button>
+                    <% end %>
                 <% end %>
             </div>
         </div>
-        <div class="card-body">
-            <%= @post.content %>
+        <br>
+
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <div class="row">
+                    <div class="col">
+                    <h4>
+                        <strong>Title:</strong>
+                        <%= @post.title %>
+                    </h4>
+                    </div>
+                    <% unless current_user.belonging == current_user.name %>
+                    <div class="col">
+                        <div class="float-right">
+                            <div id="likes_buttons<%= @post.id %>">
+                                <%= render partial: 'likes/like', locals: { post: @post, like: @like } %>
+                            </div>
+                        </div>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="card-body">
+                <%= @post.content %>
+            </div>
+            <div class="card-footer">
+                <p class="text-left font-weight-light">投稿日: <%= @post.created_at %></p>
+                <%= link_to personal_path(@firm) do %>
+                <p class="text-right font-weight-bold mr-10"><%= @post.firm_name %></p>
+                <% end %>
+            </div>
         </div>
-        <div class="card-footer">
-            <p class="text-left font-weight-light">投稿日: <%= @post.created_at %></p>
-            <%= link_to personal_path(@firm) do %>
-            <p class="text-right font-weight-bold mr-10"><%= @post.firm_name %></p>
-            <% end %>
-        </div>
+        <%= link_to  posts_path do %>
+            <button class="btn btn-outline-info btn-lg btn-block w-150px">投稿一覧へ</button>
+        <% end %>
     </div>
-</div>
+</body>

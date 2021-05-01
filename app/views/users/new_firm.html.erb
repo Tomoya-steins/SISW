@@ -8,7 +8,7 @@
     <div class="container">
         <div class="card card-container">
 
-            <%= form_with scope: :session, url: login_path, local: true, class: "form-signin mb10" do |f| %>
+            <%= form_with model: @user, url:  signup_firm_path, local: true, class: "form-signin mb10" do |f| %>
 
             <%= f.label :belonging, class: "sr-only" %>
             <%= f.text_field :belonging, required: true, class: "form-control", placeholder: "所属大学,法人" %>

@@ -1,121 +1,113 @@
-<div class="container-fluid">
-    <div class="container">
-        <div class="inline-block">
-            <% if @personal.firm_sambnail.attached? %>
-                <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [120, 120] ), class: "rounded-circle" %>
-            <% else %>
-                <div class="temporary">
-                    <%= image_tag @temporary_image, class: "rounded-circle" %>
+<body class="back">
+    <div class="container-fluid">
+        <div class="container">
+            <div class="inline-block">
+                <% if @personal.firm_sambnail.attached? %>
+                    <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [120, 120] ), class: "rounded-circle" %>
+                <% else %>
+                    <div class="temporary">
+                        <%= image_tag @temporary_image, class: "rounded-circle" %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="inline-block">
+                <div class="name">
+                    <strong>
+                        <%= @personal.name %>
+                    </strong>
                 </div>
+            </div>
+            <div class="inline-block">
+            <% if current_user.id == @personal.id %>
+                <div class="btn-position">
+                    <%= link_to edit_personal_path(@personal) do %>
+                        <button class="btn  btn-outline-info  btn-lg">
+                            編集する
+                        </button>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+
+
+        <br>
+        <table class="tbl" width="100%">
+            <% unless @personal.name == @personal.belonging %>
+            <tr>
+                <th>氏名</th>
+                <td><%= @personal.name %></td>
+            </tr>
+            <% end %>
+            <tr>
+                <th>所属</th>
+                <td><%= @personal.belonging %></td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td><%= @personal.email %></td>
+            </tr>
+            <% if @personal.name == @personal.belonging %>
+            <tr class="last">
+                <th>投稿数</th>
+                <td><%= @posts_count %></td>
+            </tr>
+            <% end %>
+        </table>
+        <% end %>
+
+        <br>
+        <% if @posts.present? %>
+        <h1>投稿一覧(最新の投稿4件を表示)</h1>
+
+        <br>
+        <div class="row">
+            <% @posts.each do |post| %>
+            <div class="col-md-3">
+                <div class="card text-center">
+                    <%= link_to post do %>
+                        <div class="card-header text-white bg-white border-muted">
+                            <% if post.content.embeds.present? %>
+                                <%= image_tag post.content.embeds.first.blob.variant(resize_to_fill: [400, 350]).processed %>
+                            <% else %>
+                                <%= image_tag @personal.firm_sambnail.variant(resize_to_fill: [400, 350] ).processed %>
+                            <% end %>
+                        </div>
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <%= post.title %>
+                        </h5>
+                    </div>
+                    <% end %>
+                    <div class="card-footer">
+                        <p>
+                            投稿日: <%= post.created_at %>
+                        </p>
+                    </div>
+                </div>
+            </div>
             <% end %>
         </div>
-        <div class="inline-block">
-            <div class="name">
-                <strong>
-                    <%= @personal.name %>
-                </strong>
-            </div>
-        </div>
-        <div class="inline-block">
-        <% if current_user.id == @personal.id %>
-            <div class="btn-position">
-                <button class="btn  btn-outline-info  btn-lg">
-                    <h6>
-                        <%= link_to '編集する', edit_personal_path(@personal) %>
-                    </h6>
-                </button>
-            </div>
-        </div>
-    </div>
+        <% end %>
 
-
-    <br>
-    <table class="tbl" width="100%">
         <% unless @personal.name == @personal.belonging %>
-        <tr>
-            <th>氏名</th>
-            <td><%= @personal.name %></td>
-        </tr>
+        いいねした企業を暫定的に非表示(2021/03/30)
         <% end %>
-         <tr>
-            <th>所属</th>
-            <td><%= @personal.belonging %></td>
-        </tr>
-        <tr>
-            <th>メールアドレス</th>
-            <td><%= @personal.email %></td>
-        </tr>
-        <% if @personal.name == @personal.belonging %>
-         <tr class="last">
-            <th>投稿数</th>
-            <td><%= @posts_count %></td>
-        </tr>
-        <% end %>
-    </table>
-    <% end %>
+        <br>
+        <br>
+        <% if @posts.present? && @like_user.present? %>
+        <h1>統計</h1>
+        <br>
 
-    <br>
-    <% if @posts.present? %>
-    <h1>投稿一覧(最新の投稿4件を表示)</h1>
-
-    <br>
-    <div class="row">
-        <% @posts.each do |post| %>
-        <div class="col-md-3">
-            <div class="card text-center">
-                <%= link_to post do %>
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <%= post.title %>
-                    </h5>
+            <div class="row">
+                <div class="col">
+                    <h3 class="statistic">学部・学科</h3>
+                    <%= pie_chart @like_user.group(:department).count %>
                 </div>
-                <% end %>
-                <div class="card-footer">
-                    <p>
-                        投稿日: <%= post.created_at %>
-                    </p>
+                <div class="col">
+                    <h3 class="statistic">出身地</h3>
+                    <%= pie_chart @like_user.group(:birthplace).count %>
                 </div>
             </div>
-        </div>
         <% end %>
-    </div>
-    <% end %>
-
-    <% unless @personal.name == @personal.belonging %>
-    いいねした企業を暫定的に非表示(2021/03/30)
-    <% end %>
-    <%
-=begin%>
- <% if current_user.id == @personal.id && @posts.blank? && @firm.present? %>
-    <h1>いいねした企業</h1>
-        <% @firm.each do |firm| %>
-
-            <%= firm.firm_name %>
-        <% end %>  
-    <% end %> 
-<%
-=end%>
-
-    <br>
-    <br>
-    <% if @posts.present? && @like_user.present? %>
-    <h1>統計</h1>
-    <br>
-
-        <%
-=begin%>
- <p id="notice"><%= notice %></p> 
-<%
-=end%>  
-        <div class="row">
-            <div class="col">
-                <h3 class="statistic">学部・学科</h3>
-                <%= pie_chart @like_user.group(:department).count %>
-            </div>
-            <div class="col">
-                <h3 class="statistic">出身地</h3>
-                <%= pie_chart @like_user.group(:birthplace).count %>
-            </div>
-        </div>
-    <% end %>
 </div>
+</body>

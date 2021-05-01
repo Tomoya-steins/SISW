@@ -1,3 +1,4 @@
+<body class="back">
 <div class="container-fluid">
         <h1 class="h1-title text-center">投稿一覧</h1>
         <div class="newPost">
@@ -8,13 +9,14 @@
             <% end %>
         </div>
 
-        <div class="border"></div>
+        <div class="border border-dark"></div>
 
         <div class="posts">
             <div class="row">
                 <% @posts.each do |post| %>
                 <div class="col-md-4">
                     <div class="card border-dark mb-3 text-center">
+                     <%= link_to post do %>
                         <div class="card-header text-white bg-white border-muted">
                             <% if post.content.embeds.present? %>
                                 <%= image_tag post.content.embeds.first.blob.variant(resize_to_fill: [400, 350]).processed %>
@@ -26,18 +28,13 @@
                                 <% end %>
                             <% end %>
                         </div>
-                        <%= link_to post do %>
                         <div class="card-body">
-                            <h5 class="card-title">
+                            <h2 class="card-title color">
                                 <%= post.title %>
-                            </h5>
-                            <p>
-                                投稿日: <%= post.created_at %>
-                            </p>
+                            </h2>
                         </div>
-                        <% end %>
                         <div class="card-footer">
-                            <p>
+                            <p class="color">
                                 <%= post.firm_name %>
                             </p>
                             <% if current_user.admin? %>
@@ -45,6 +42,7 @@
                             <% end %>
                         </div>
                     </div>
+                    <% end %>
                 </div>
                 <% end %>
             </div>
@@ -53,3 +51,4 @@
             </div>
         </div>
 </div>
+</body>

@@ -7,13 +7,17 @@ class User < ApplicationRecord
     #has_many :likes
    
     has_secure_password
-    validates :password, presence: true, length: { minimum: 6}, on: :create
+    validates :password, presence: true, length: { minimum: 6}, on: [:create, :create_firm]
     has_secure_token :api_token
 
-    validates :name, presence: true, length: { maximum: 50}
+    validates :name, presence: true, length: { maximum: 50}, on: :create
     validates :belonging, presence: true, length: {maximum: 15}
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :email, presence: true, length: { maximum: 255}, format: { with: VALID_EMAIL_REGEX}, uniqueness: { case_sensitive: false}
+
+    #form.selectのため以下のような書き方になる
+    #validates :birthplace, inclusion: { in: [ "富山県", "愛知県", "その他" ] }, on: :create
+    #validates :department, inclusion: { in: ["工学部・機械システム工学科", "工学部・知能ロボット工学科", "工学部・電気電子工学科", "工学部・情報システム工学科", "工学部・環境・社会基盤工学科", "工学部・生物工学科", "工学部・医薬品工学科", "看護学部・看護学科"] }, on: :create
 
     def User.digest(string)
         cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost

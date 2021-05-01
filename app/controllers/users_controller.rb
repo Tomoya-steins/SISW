@@ -11,13 +11,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
-      @user.send_activation_email
-      # UserMailer.account_activation(@user).deliver_now
-      redirect_to signup_wait_path, info: "入力されたEメールから有効化をお願いします。"
+    if @user.department.present? && @user.birthplace.present?
+      if @user.save
+        @user.send_activation_email
+        # UserMailer.account_activation(@user).deliver_now
+        redirect_to signup_wait_path, info: "入力されたEメールから有効化をお願いします。"
+      else
+      flash.now[:danger] = "失敗しました。"
+      render :new
+      end
     else
-    flash.now[:danger] = "失敗しました。"
-    render :new
+      render :new
     end
   end
 
@@ -28,7 +32,7 @@ class UsersController < ApplicationController
   def create_firm
     @user = User.new(firm_params)
     @user.name = @user.belonging
-    if Firm.find_by(firm_name: "#{@user.belonging}")
+    if Firm.find_by(firm_name: "#{@user.name}")
       if @user.save
         @user.send_activation_email
         # UserMailer.account_activation(@user).deliver_now
